@@ -1,0 +1,39 @@
+{
+    "logo" : {
+        "source": "images/logo.png",
+        "height" : 60,
+        "width" : 240
+    },
+    "sections": [
+        {
+            "title": "Home",
+            "href": "/"
+        },
+        {
+            "title": "Experience",
+            "href": "/experience"
+        },
+        {
+            "title": "Education",
+            "href": "/education"
+        },
+        {
+            "title": "Skills",
+            "href": "/skills"
+        },
+        {
+            "title": "Projects",
+            "href": "/projects"
+        },
+        {
+            "title": "About",
+            "href": "/about"
+        },
+        {
+            "title": "Resume",
+            "href": "https://drive.google.com/file/d/1DSv4f1zPWvrJXgfo6m-ZSsPKh2CgSoek/view?usp=sharing",
+            "type": "link"
+        }
+    ]
+
+}

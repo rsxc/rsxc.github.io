@@ -1,0 +1,36 @@
+{
+    "experiences": [
+        {
+            "title": "Backend Software Engineer",
+            "subtitle": "Faire Wholesale Inc.",
+            "companyLink": "faire.com",
+            "workType": "Full-time",
+            "workDescription": [
+                "Integrated **2** new product.",
+                "Worked on adding **def** to **bcd**. Improved speed by 50%."
+            ],
+            "dateText": "05/2022 – 11/2023"
+        },
+        {
+            "title": "Frontend Software Engineer",
+            "subtitle": "MappedIn Inc.",
+            "companyLink": "mappedin.com",
+            "workType": "Co-op",
+            "workDescription": [
+                "Worked on abc."
+            ],
+            "dateText": "01/20XX – 05/20XX"
+        },
+        {
+            "title": "Full Stack Software Developer",
+            "subtitle": "LumenEd.io",
+            "companyLink": "#",
+            "workType": "Co-op",
+            "workDescription": [
+                "Developed the official apps for the startup for both Android and iOS using hybrid framework.",
+                "Done bcd work."
+            ],
+            "dateText": "09/20XX – 01/20YY"
+        }
+    ]
+}
