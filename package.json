@@ -1,7 +1,7 @@
 {
   "name": "portfolio-app",
   "version": "0.1.0",
-  "homepage": "https://rsxc.github.io/react-portfolio/",
+  "homepage": "https://rsxc.github.io",
   "private": true,
   "dependencies": {
     "bootstrap": "^5.3.2",
