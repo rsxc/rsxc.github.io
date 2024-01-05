@@ -46,6 +46,24 @@ function Education(props) {
         <Fade>
           <div style={{ width }} className="section-content-container">
             <Container>
+              
+               {data.education.map((education) => (education.icon ? (
+                <>
+                <img
+                  key={education.icon.src}
+                  src={education.icon.src}
+                  alt={education.icon.alt}
+                  style={{backgroundColor : theme.titleColor}}
+                />
+                <p> {education.title} </p>
+                <h1> {education.cardTitle}</h1>
+                <p> {education.cardSubtitle}</p>
+                <ul>
+                {education.cardDetailedText.map((degree) => (<li> {degree} </li>))}
+                </ul>
+                </>
+              ) : null))}
+              
               {/* <Chrono
                 hideControls
                 allowDynamicUpdate

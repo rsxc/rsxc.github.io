@@ -6,7 +6,6 @@ import Home from './components/Home';
 import endpoints from './constants/endpoints';
 import Particles from "react-tsparticles";
 import graphicalOptions from "./theme/particles/graphical.json";
-import snowOptions from "./theme/particles/snow"
 import AppContext from './AppContext';
 
 function MainApp() {
@@ -25,7 +24,7 @@ function MainApp() {
 
   return (
     <div className="MainApp">
-      <Particles options={values.darkMode.value == true ? snowOptions : graphicalOptions} />
+      <Particles options={values.darkMode.value == true ? graphicalOptions : graphicalOptions } />
       <NavBarWithRouter />
       <main className="main">
         <Suspense fallback={<FallbackSpinner />}>
