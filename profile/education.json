@@ -14,6 +14,28 @@
             "icon": {
                 "src": "images/education/uwaterloo.png"
             }
+        },
+
+        {
+            "title": "Sept 2016 - Apr 2022",
+            "cardTitle": "Diploma in Excellence in GIS (Geographical Information Systems)",
+            "cardSubtitle": "University of Waterloo, Ontario",
+            "cardDetailedText": [
+            ],
+            "icon": {
+                "src": ""
+            }
+        },
+
+        {
+            "title": "Sept 2016 - Apr 2022",
+            "cardTitle": "Leadership Certificate Program",
+            "cardSubtitle": "University of Waterloo, Ontario",
+            "cardDetailedText": [
+            ],
+            "icon": {
+                "src": ""
+            }
         }
     ]
 }

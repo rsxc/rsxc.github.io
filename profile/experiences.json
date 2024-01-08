@@ -6,8 +6,10 @@
             "companyLink": "faire.com",
             "workType": "Full-time",
             "workDescription": [
-                "Integrated **2** new product.",
-                "Worked on adding **def** to **bcd**. Improved speed by 50%."
+                "Engineered and optimized high-performing APIs, enabling thousands of calls per minute with minimal latency, leading to a 40% increase in overall system throughput serving user base of 100k Brands & 500k Retailers.",
+                "Co-acted with design teams to translate complex design specifications into efficient API functionalities, resulting in a 20% enhancement in user engagement and a 15% increase in customer satisfaction.",
+                "Revamped the conventional banner notification system by spearheading the development of a Kotlin-based notification feature, integrating Hibernate ORM for MySQL resulted in a 20% efficiency boost, collaborating with designers and frontend engineers for seamless React integration.",
+                "Implemented custom Datadog dashboards to track and analyze key performance metrics, including error rates, throughput, and database query execution times while facilitating health monitor meetings leading to a 25% improvement in system reliability and a 20% decrease in incident response times."
             ],
             "dateText": "05/2022 – 11/2023"
         },
@@ -17,9 +19,11 @@
             "companyLink": "mappedin.com",
             "workType": "Co-op",
             "workDescription": [
-                "Worked on abc."
+                "Designed and developed 2+ pages every day for the company’s website using Figma and built with Gatsby & React.",
+                "Collaborated with Marketing and Sales teams to bring the latest content to the website improving SEO by 50%.",
+                "Created company’s virtual escape room game with 10+ puzzles for social activities."
             ],
-            "dateText": "01/20XX – 05/20XX"
+            "dateText": "09/2020 – 12/2020"
         },
         {
             "title": "Full Stack Software Developer",
@@ -27,10 +31,38 @@
             "companyLink": "#",
             "workType": "Co-op",
             "workDescription": [
-                "Developed the official apps for the startup for both Android and iOS using hybrid framework.",
-                "Done bcd work."
+                "Deployed BigBlueButton on test servers (AWS, DigitalOcean) and customized the functionality using Ruby on Rails.",
+                "Optimized SQL queries to retrieve the data 80% faster in admin dashboard.",
+                "Written python/bash scripts to generate various user statistics from server logs in csv, XML, txt formats.",
+                "Developed a booking system (Tutor Marketplace) using WooCommerce and resizing it to company needs.",
+                "Customized website using HTML5, CSS, SASS, JavaScript, jQuery, PHP for tutors’ marketplace and tutor partners."
             ],
-            "dateText": "09/20XX – 01/20YY"
+            "dateText": "01/2020 – 04/2020"
+        },
+        {
+            "title": "Instructional Support Assistant (ISA) CS247/246/137/136/115 | Math 647",
+            "subtitle": "David R. Cheriton School of Computer Science",
+            "companyLink": "uwaterloo.ca",
+            "workType": "Co-op",
+            "workDescription": [
+                "Facilitated student learning & understanding (relating OOP C++/Python, Software engineering design patterns, Algorithms, Data Structures, Pointers, Memory Management etc.) during lectures, tutorials & answered questions.",
+                "Created testing scripts to test over 900 code submissions, marked assignments/projects and provided constructive feedback for all aspects of code correctness/quality.",
+                "Designed new course webpage (Bootstrap, JS) for CS115/247, improving overall aesthetics and utility of webpage for students and course staff."
+            ],
+            "dateText": "09/2018 – 12/2019"
+        },
+        {
+            "title": "Private Tutor | Computer Science / Mathematics / Statistics",
+            "subtitle": "Private",
+            "companyLink": "#",
+            "workType": "Full Time",
+            "workDescription": [
+                "Conducting code reviews for 10+ students per day, focusing on code correctness, efficiency, and readability. ",
+                "Curating 3+ example code in Java/Python/C++ depicting various programming concepts to improve learning.",
+                "Managing 20+ students per week with different study schedules and learning habits.",
+                "Assisting students in 10+ courses including compiler construction, OOP, algorithms & data structures, competitive programming, databases, linear algebra, calculus, statistics, LP optimization etc."
+            ],
+            "dateText": "09/2018 – Present"
         }
     ]
 }
