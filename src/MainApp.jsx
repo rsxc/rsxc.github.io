@@ -8,7 +8,6 @@ import Particles from "react-tsparticles";
 import graphicalOptions from "./theme/particles/graphical.json";
 import soundNotes from "./theme/particles/soundNotes.json";
 import AppContext from './AppContext';
-import { ZIndex } from '@tsparticles/engine';
 
 function MainApp() {
   const [data, setData] = useState(null);
@@ -26,8 +25,7 @@ function MainApp() {
 
   return (
     <div className="MainApp">
-
-      <Particles style={{ zIndex: "-100" }} options={values.darkMode.value == true ? graphicalOptions : soundNotes } />
+      <Particles options={values.darkMode.value == true ? graphicalOptions : soundNotes } />
       <NavBarWithRouter />
       <main className="main">
         <Suspense fallback={<FallbackSpinner />}>
