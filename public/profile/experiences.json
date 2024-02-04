@@ -6,10 +6,10 @@
             "companyLink": "faire.com",
             "workType": "Full-time",
             "workDescription": [
-                "Engineered and optimized high-performing APIs, enabling thousands of calls per minute with minimal latency, leading to a 40% increase in overall system throughput serving user base of 100k Brands & 500k Retailers.",
-                "Co-acted with design teams to translate complex design specifications into efficient API functionalities, resulting in a 20% enhancement in user engagement and a 15% increase in customer satisfaction.",
-                "Revamped the conventional banner notification system by spearheading the development of a Kotlin-based notification feature, integrating Hibernate ORM for MySQL resulted in a 20% efficiency boost, collaborating with designers and frontend engineers for seamless React integration.",
-                "Implemented custom Datadog dashboards to track and analyze key performance metrics, including error rates, throughput, and database query execution times while facilitating health monitor meetings leading to a 25% improvement in system reliability and a 20% decrease in incident response times."
+                "Engineered high-performing APIs, facilitating thousands of calls per minute with minimal latency. Resulted in a 40% increase in overall system throughput, serving a user base of 100k Brands & 500k Retailers.",
+                "Led end-to-end implementation of a Notification System, encompassing design documentation, MySQL schema creation, and CRUD endpoint development. Rigorously tested to ensure robustness, enhancing system functionality.",
+                "Collaborated with design teams to transform complex specifications into efficient API functionalities. Achieved a 20% boost in user engagement and a 15% increase in customer satisfaction in brand onboarding process on Faire.com.",
+                "Developed custom Datadog dashboards to monitor key performance metrics, improving error rates, throughput, and database query execution times. Facilitated health monitor meetings, resulting in a 25% improvement in system reliability and a 20% decrease in incident response times."
             ],
             "dateText": "05/2022 – 11/2023"
         },

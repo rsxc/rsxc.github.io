@@ -2,14 +2,14 @@
     "education": [
         {
             "title": "Sept 2016 - Apr 2022",
-            "cardTitle": "Bachelors of Mathematics",
+            "cardTitle": "Bachelors of Computer Science",
             "cardSubtitle": "University of Waterloo, Ontario",
             "cardDetailedText": [
                 "Majors in Combinatorics and Optimisation",
+                "Majors in Data Science (in Geomatics and Geospatial Data)",
                 "Minors in Computer Science",
                 "Majors in Computational Mathematics",
-                "Majors in Geomatics",
-                "Diploma in excellence in GIS"
+                "Diploma in excellence in GIS (Geographical Information Systems)"
             ],
             "icon": {
                 "src": "images/education/uwaterloo.png"
