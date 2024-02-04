@@ -25,7 +25,9 @@ function MainApp() {
 
   return (
     <div className="MainApp">
-      <Particles options={values.darkMode.value == true ? graphicalOptions : soundNotes } />
+      <Suspense fallback={<FallbackSpinner />}>
+        <Particles options={values.darkMode.value == true ? graphicalOptions : soundNotes} />
+      </Suspense>
       <NavBarWithRouter />
       <main className="main">
         <Suspense fallback={<FallbackSpinner />}>
