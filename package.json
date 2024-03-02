@@ -48,7 +48,9 @@
     "test": "NODE_OPTIONS=--openssl-legacy-provider react-scripts test",
     "eject": "NODE_OPTIONS=--openssl-legacy-provider react-scripts eject"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  },
   "resolutions": {
     "react-error-overlay": "6.0.9"
   }
