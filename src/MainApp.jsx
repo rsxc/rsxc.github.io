@@ -5,10 +5,8 @@ import NavBarWithRouter from './components/NavBar';
 import Home from './components/Home';
 import endpoints from './constants/endpoints';
 import Particles from "react-tsparticles";
-import graphicalOptions from "./theme/particles/graphical.json";
-import soundNotes from "./theme/particles/soundNotes.json";
 import AppContext from './AppContext';
-import { Boxes } from './components/backgroundBoxes.tsx';
+import configs from '@tsparticles/configs';
 
 function MainApp() {
   const [data, setData] = useState(null);
@@ -26,10 +24,9 @@ function MainApp() {
 
   return (
     <div className="MainApp">
-      <Boxes />
-      {/* <Suspense fallback={<FallbackSpinner />}>
-        <Particles options={values.darkMode.value == true ? graphicalOptions : soundNotes} />
-      </Suspense> */}
+      <Suspense fallback={<FallbackSpinner />}>
+        <Particles options={values.darkMode.value == true ? configs.amongUs : configs.emitterAngled} />
+      </Suspense>
       <NavBarWithRouter />
       <main className="main">
         <Suspense fallback={<FallbackSpinner />}>

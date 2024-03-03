@@ -1897,10 +1897,22 @@
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
   integrity sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==
 
+"@tsparticles/configs@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@tsparticles/configs/-/configs-3.3.0.tgz#fbd72f027785b4812d27ff97a08eb60ed93e8be7"
+  integrity sha512-G4PeSwpHjgmCkIGuSAQT6cZo2FLnMXSw8/nyYgA/AxfHHq1CX5iO+hJmHkl5yhBrQggsE7TyjCY/SXe/f4umBQ==
+  dependencies:
+    "@tsparticles/engine" "^3.3.0"
+
 "@tsparticles/engine@^3.0.3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@tsparticles/engine/-/engine-3.0.3.tgz#2254e82703ed8d6857b6d5515ebbbf4aa78ebc16"
   integrity sha512-1yGci0gMF9uBIVPXBYekORq8UYf8Twz3Xy/ZWWVCFWeVh90Amdns3fad2pf2HicZe8HZqpa1cN2Io1MOHAlO8w==
+
+"@tsparticles/engine@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@tsparticles/engine/-/engine-3.3.0.tgz#9e293b186d735efee31d740ee269aa70c6f52650"
+  integrity sha512-Sr24epYquTelGrUbMaknXTscib8IMQJrbmShJnEemU+wpZNIPtAh09sQgGtq1pUxrGQRUSQIgaybYuXcNgk8rg==
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14":
   version "7.20.5"
