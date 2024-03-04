@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, useContext } from 'react';
+import React, { useState, useEffect, Suspense, useContext, useRef } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import FallbackSpinner from './components/FallbackSpinner';
 import NavBarWithRouter from './components/NavBar';
@@ -24,9 +24,9 @@ function MainApp() {
 
   return (
     <div className="MainApp">
-      <Suspense fallback={<FallbackSpinner />}>
+      {/* <Suspense fallback={<FallbackSpinner />}>
         <Particles options={values.darkMode.value == true ? configs.amongUs : configs.emitterAngled} />
-      </Suspense>
+      </Suspense> */}
       <NavBarWithRouter />
       <main className="main">
         <Suspense fallback={<FallbackSpinner />}>

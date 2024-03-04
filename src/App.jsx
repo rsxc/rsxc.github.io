@@ -11,6 +11,7 @@ import AppContext from './AppContext';
 import MainApp from './MainApp';
 import GlobalStyles from './theme/GlobalStyles';
 import { lightTheme, darkTheme } from './theme/themes';
+import VantaWaves from './components/vants';
 
 function App() {
   const darkMode = useDarkMode(true);
@@ -26,9 +27,11 @@ function App() {
     <AppContext.Provider value={{ darkMode }}>
       <ThemeProvider theme={darkMode.value ? darkTheme : lightTheme}>
         <GlobalStyles />
+        <VantaWaves>
         <div className="App">
           <RouterProvider router={router} />
         </div>
+        </VantaWaves>
       </ThemeProvider>
     </AppContext.Provider>
   );
