@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Container, Row, Button } from 'react-bootstrap';
 import { ThemeContext } from 'styled-components';
 import PropTypes from 'prop-types';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Typewriter from 'typewriter-effect';
 import Fade from 'react-reveal';
 import endpoints from '../constants/endpoints.ts';

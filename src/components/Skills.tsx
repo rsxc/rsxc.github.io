@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal';
@@ -24,7 +24,7 @@ function Skills(props) {
   const [data, setData] = useState<any>(null);
 
   const renderSkillsIntro = (intro) => (
-    <h4 style={styles.introTextContainer}>
+    <h4 style={styles.introTextContainer as any}>
       {/* biome-ignore lint/correctness/noChildrenProp: <explanation> */}
       <ReactMarkdown children={intro} />
     </h4>

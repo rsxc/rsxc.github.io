@@ -1,4 +1,4 @@
-import React, { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { useEffect, useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
@@ -101,7 +101,7 @@ const NavBar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto" />
           <Nav>
-            {data?.sections?.map((section, index) => (section?.type === 'link' ? (
+            {data?.sections?.map((section) => (section?.type === 'link' ? (
                 <ExternalNavLink
                   key={section.title}
                   href={section.href}
