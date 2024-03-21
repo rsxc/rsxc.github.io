@@ -1,63 +1,878 @@
 {
     "intro": "I love to learn new things and experiment with new technologies.\nThese are some of the major languages, technologies, tools and platforms I have worked with:",
-    "skills": [{
-     
-            "title": "Languages & Databases",
-            "items" : [
-     
-                {
-                    "icon": "images/skills/java.png",
-                    "title": "Java"
-                },
-                {
-                    "icon": "images/skills/php.png",
-                    "title": "PHP"
-                },
-                {
-                    "icon": "images/skills/js.png",
-                    "title": "JavaScript"
-                },
-                {
-                    "icon": "images/skills/python.png",
-                    "title": "Python"
-                },
-                {
-                    "icon": "images/skills/mysql.png",
-                    "title": "MySQL"
-                }
-        ]},
+    "skills": [
         {
-            "title": "Frameworks & Technologies",
-            "items" : [
+            "title": "AIML",
+            "items": [
                 {
-                    "icon": "images/skills/android_new.png",
-                    "title": "Android"
+                    "icon": "images/icons/AIML/opencv.svg",
+                    "title": "Open CV"
                 },
                 {
-                    "icon": "images/skills/react.png",
-                    "title": "React"
+                    "icon": "images/icons/AIML/pytorch.svg",
+                    "title": "PyTorch"
                 },
                 {
-                    "icon": "images/skills/nodejs.png",
-                    "title": "Nodejs"
+                    "icon": "images/icons/AIML/scikit.svg",
+                    "title": "Scikit"
+                },
+                {
+                    "icon": "images/icons/AIML/tensorflow.svg",
+                    "title": "TensorFlow"
                 }
             ]
         },
         {
-            "title" : "Tools & Platforms",
+            "title": "Automation",
             "items": [
                 {
-                    "icon": "images/skills/android-studio.png",
-                    "title": "Android Studio"
+                    "icon": "images/icons/Automation/ifttt.svg",
+                    "title": "IFTTT"
                 },
                 {
-                    "icon": "images/skills/git.png",
+                    "icon": "images/icons/Automation/zapier.svg",
+                    "title": "Zapier"
+                }
+            ]
+        },
+        {
+            "title": "BaaS",
+            "items": [
+                {
+                    "icon": "images/icons/BaaS/amplify.svg",
+                    "title": "Amplify"
+                },
+                {
+                    "icon": "images/icons/BaaS/firebase.svg",
+                    "title": "Firebase"
+                },
+                {
+                    "icon": "images/icons/BaaS/heroku.svg",
+                    "title": "Heroku"
+                }
+            ]
+        },
+        {
+            "title": "Backend Development",
+            "items": [
+                {
+                    "icon": "images/icons/BackendDevelopment/express.svg",
+                    "title": "Express"
+                },
+                {
+                    "icon": "images/icons/BackendDevelopment/graphql.svg",
+                    "title": "GraphQL"
+                },
+                {
+                    "icon": "images/icons/BackendDevelopment/hadoop.svg",
+                    "title": "Hadoop"
+                },
+                {
+                    "icon": "images/icons/BackendDevelopment/kafka.svg",
+                    "title": "Kafka"
+                },
+                {
+                    "icon": "images/icons/BackendDevelopment/nestjs.svg",
+                    "title": "NestJS"
+                },
+                {
+                    "icon": "images/icons/BackendDevelopment/nginx.svg",
+                    "title": "Nginx"
+                },
+                {
+                    "icon": "images/icons/BackendDevelopment/nodejs.svg",
+                    "title": "Node.js"
+                },
+                {
+                    "icon": "images/icons/BackendDevelopment/openresty.svg",
+                    "title": "OpenResty"
+                },
+                {
+                    "icon": "images/icons/BackendDevelopment/rabbitmq.svg",
+                    "title": "RabbitMQ"
+                },
+                {
+                    "icon": "images/icons/BackendDevelopment/solr.svg",
+                    "title": "Solr"
+                },
+                {
+                    "icon": "images/icons/BackendDevelopment/spring.svg",
+                    "title": "Spring"
+                }
+            ]
+        },
+        {
+            "title": "Data Visualization",
+            "items": [
+                {
+                    "icon": "images/icons/DataVisualization/canvasjs.svg",
+                    "title": "CanvasJS"
+                },
+                {
+                    "icon": "images/icons/DataVisualization/chartjs.svg",
+                    "title": "Chart.js"
+                },
+                {
+                    "icon": "images/icons/DataVisualization/d3js.svg",
+                    "title": "D3.js"
+                },
+                {
+                    "icon": "images/icons/DataVisualization/grafana.svg",
+                    "title": "Grafana"
+                },
+                {
+                    "icon": "images/icons/DataVisualization/kibana.svg",
+                    "title": "Kibana"
+                }
+            ]
+        },
+        {
+            "title": "Database",
+            "items": [
+                {
+                    "icon": "images/icons/Database/cassandra.svg",
+                    "title": "Cassandra"
+                },
+                {
+                    "icon": "images/icons/Database/cockroachdb.svg",
+                    "title": "CockroachDB"
+                },
+                {
+                    "icon": "images/icons/Database/couchdb.svg",
+                    "title": "CouchDB"
+                },
+                {
+                    "icon": "images/icons/Database/elasticsearch.svg",
+                    "title": "Elasticsearch"
+                },
+                {
+                    "icon": "images/icons/Database/hive.svg",
+                    "title": "Hive"
+                },
+                {
+                    "icon": "images/icons/Database/mariadb.svg",
+                    "title": "MariaDB"
+                },
+                {
+                    "icon": "images/icons/Database/mongodb.svg",
+                    "title": "MongoDB"
+                },
+                {
+                    "icon": "images/icons/Database/mysql.svg",
+                    "title": "MySQL"
+                },
+                {
+                    "icon": "images/icons/Database/oracle.svg",
+                    "title": "Oracle"
+                },
+                {
+                    "icon": "images/icons/Database/postgresql.svg",
+                    "title": "PostgreSQL"
+                },
+                {
+                    "icon": "images/icons/Database/realm.svg",
+                    "title": "Realm"
+                },
+                {
+                    "icon": "images/icons/Database/redis.svg",
+                    "title": "Redis"
+                },
+                {
+                    "icon": "images/icons/Database/sqlite.svg",
+                    "title": "SQLite"
+                }
+            ]
+        },
+        {
+            "title": "DevOps",
+            "items": [
+                {
+                    "icon": "images/icons/Devops/aws.svg",
+                    "title": "AWS"
+                },
+                {
+                    "icon": "images/icons/Devops/azure.svg",
+                    "title": "Azure"
+                },
+                {
+                    "icon": "images/icons/Devops/bash.svg",
+                    "title": "Bash"
+                },
+                {
+                    "icon": "images/icons/Devops/circleci.svg",
+                    "title": "CircleCI"
+                },
+                {
+                    "icon": "images/icons/Devops/docker.svg",
+                    "title": "Docker"
+                },
+                {
+                    "icon": "images/icons/Devops/gcp.svg",
+                    "title": "GCP"
+                },
+                {
+                    "icon": "images/icons/Devops/jenkins.svg",
+                    "title": "Jenkins"
+                },
+                {
+                    "icon": "images/icons/Devops/kubernetes.svg",
+                    "title": "Kubernetes"
+                },
+                {
+                    "icon": "images/icons/Devops/travisci.svg",
+                    "title": "TravisCI"
+                },
+                {
+                    "icon": "images/icons/Devops/vagrant.svg",
+                    "title": "Vagrant"
+                }
+            ]
+        },
+        {
+            "title": "Framework",
+            "items": [
+                {
+                    "icon": "./images/icons/Framework/codeigniter.svg",
+                    "title": "CodeIgniter"
+                },
+                {
+                    "icon": "./images/icons/Framework/django.svg",
+                    "title": "Django"
+                },
+                {
+                    "icon": "./images/icons/Framework/dotnet.svg",
+                    "title": ".NET"
+                },
+                {
+                    "icon": "./images/icons/Framework/electron.svg",
+                    "title": "Electron"
+                },
+                {
+                    "icon": "./images/icons/Framework/flask.svg",
+                    "title": "Flask"
+                },
+                {
+                    "icon": "./images/icons/Framework/laravel.svg",
+                    "title": "Laravel"
+                },
+                {
+                    "icon": "./images/icons/Framework/quasar.svg",
+                    "title": "Quasar"
+                },
+                {
+                    "icon": "./images/icons/Framework/rails.svg",
+                    "title": "Rails"
+                },
+                {
+                    "icon": "./images/icons/Framework/symfony.svg",
+                    "title": "Symfony"
+                }
+            ]
+        },
+        {
+            "title": "Frontend Development",
+            "items": [
+                {
+                    "icon": "./images/icons/FrontendDevelopment/angularjs.svg",
+                    "title": "AngularJS"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/babel.svg",
+                    "title": "Babel"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/backbonejs.svg",
+                    "title": "Backbone.js"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/bootstrap.svg",
+                    "title": "Bootstrap"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/bulma.svg",
+                    "title": "Bulma"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/css.svg",
+                    "title": "CSS"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/ember.svg",
+                    "title": "Ember.js"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/gtk.svg",
+                    "title": "GTK"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/gulp.svg",
+                    "title": "Gulp"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/html.svg",
+                    "title": "HTML"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/materialize.svg",
+                    "title": "Materialize"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/meteor.svg",
+                    "title": "Meteor"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/pug.svg",
+                    "title": "Pug"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/qt.svg",
+                    "title": "Qt"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/reactjs.svg",
+                    "title": "React.js"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/redux.svg",
+                    "title": "Redux"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/sass.svg",
+                    "title": "Sass"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/svelte.svg",
+                    "title": "Svelte"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/tailwind.svg",
+                    "title": "Tailwind CSS"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/vuejs.svg",
+                    "title": "Vue.js"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/vuetify.svg",
+                    "title": "Vuetify"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/webpack.svg",
+                    "title": "Webpack"
+                },
+                {
+                    "icon": "./images/icons/FrontendDevelopment/wxwidgets.svg",
+                    "title": "wxWidgets"
+                }
+            ]
+        },
+        {
+            "title": "Game Engines",
+            "items": [
+                {
+                    "icon": "./images/icons/GameEngines/unity.svg",
+                    "title": "Unity"
+                },
+                {
+                    "icon": "./images/icons/GameEngines/unreal.svg",
+                    "title": "Unreal Engine"
+                }
+            ]
+        },
+        {
+            "title": "Mobile App Development",
+            "items": [
+                {
+                    "icon": "./images/icons/MobileAppDevelopment/android.svg",
+                    "title": "Android"
+                },
+                {
+                    "icon": "./images/icons/MobileAppDevelopment/apachecordova.svg",
+                    "title": "Apache Cordova"
+                },
+                {
+                    "icon": "./images/icons/MobileAppDevelopment/dart.svg",
+                    "title": "Dart"
+                },
+                {
+                    "icon": "./images/icons/MobileAppDevelopment/flutter.svg",
+                    "title": "Flutter"
+                },
+                {
+                    "icon": "./images/icons/MobileAppDevelopment/ionic.svg",
+                    "title": "Ionic"
+                },
+                {
+                    "icon": "./images/icons/MobileAppDevelopment/kotlin.svg",
+                    "title": "Kotlin"
+                },
+                {
+                    "icon": "./images/icons/MobileAppDevelopment/nativescript.svg",
+                    "title": "NativeScript"
+                },
+                {
+                    "icon": "./images/icons/MobileAppDevelopment/reactnative.svg",
+                    "title": "React Native"
+                },
+                {
+                    "icon": "./images/icons/MobileAppDevelopment/xamarin.svg",
+                    "title": "Xamarin"
+                }
+            ]
+        },
+        {
+            "title": "Other",
+            "items": [
+                {
+                    "icon": "./images/icons/Other/arduino.svg",
+                    "title": "Arduino"
+                },
+                {
+                    "icon": "./images/icons/Other/git.svg",
                     "title": "Git"
                 },
                 {
-                    "icon": "images/skills/docker.png",
-                    "title": "Docker"
+                    "icon": "./images/icons/Other/linux.svg",
+                    "title": "Linux"
                 }
             ]
-    }
-]}
+        },
+        {
+            "title": "Programming Languages",
+            "items": [
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/c.svg",
+                    "title": "C"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/clojure.svg",
+                    "title": "Clojure"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/coffeescript.svg",
+                    "title": "CoffeeScript"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/cpp.svg",
+                    "title": "C++"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/csharp.svg",
+                    "title": "C#"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/elixir.svg",
+                    "title": "Elixir"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/erlang.svg",
+                    "title": "Erlang"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/go.svg",
+                    "title": "Go"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/haskell.svg",
+                    "title": "Haskell"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/java.svg",
+                    "title": "Java"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/javascript.svg",
+                    "title": "JavaScript"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/objectivec.svg",
+                    "title": "Objective-C"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/perl.svg",
+                    "title": "Perl"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/php.svg",
+                    "title": "PHP"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/python.svg",
+                    "title": "Python"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/ruby.svg",
+                    "title": "Ruby"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/rust.svg",
+                    "title": "Rust"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/scala.svg",
+                    "title": "Scala"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/swift.svg",
+                    "title": "Swift"
+                },
+                {
+                    "icon": "./images/icons/ProgrammingLanguages/typescript.svg",
+                    "title": "Typescript"
+                }
+            ]
+        },
+        {
+            "title": "Social",
+            "items": [
+                {
+                    "icon": "./images/icons/Social/behance.svg",
+                    "title": "Behance"
+                },
+                {
+                    "icon": "./images/icons/Social/blogger.svg",
+                    "title": "Blogger"
+                },
+                {
+                    "icon": "./images/icons/Social/codeforces.svg",
+                    "title": "Codeforces"
+                },
+                {
+                    "icon": "./images/icons/Social/codepen.svg",
+                    "title": "CodePen"
+                },
+                {
+                    "icon": "./images/icons/Social/codesandbox.svg",
+                    "title": "CodeSandbox"
+                },
+                {
+                    "icon": "./images/icons/Social/devto.svg",
+                    "title": "DevTo"
+                },
+                {
+                    "icon": "./images/icons/Social/discord.svg",
+                    "title": "Discord"
+                },
+                {
+                    "icon": "./images/icons/Social/dribbble.svg",
+                    "title": "Dribbble"
+                },
+                {
+                    "icon": "./images/icons/Social/dropbox.svg",
+                    "title": "Dropbox"
+                },
+                {
+                    "icon": "./images/icons/Social/envato.svg",
+                    "title": "Envato"
+                },
+                {
+                    "icon": "./images/icons/Social/facebook-alt.svg",
+                    "title": "Facebook (Alt)"
+                },
+                {
+                    "icon": "./images/icons/Social/facebook.svg",
+                    "title": "Facebook"
+                },
+                {
+                    "icon": "./images/icons/Social/geeks-for-geeks.svg",
+                    "title": "Geeks for Geeks"
+                },
+                {
+                    "icon": "./images/icons/Social/github.svg",
+                    "title": "GitHub"
+                },
+                {
+                    "icon": "./images/icons/Social/google.svg",
+                    "title": "Google"
+                },
+                {
+                    "icon": "./images/icons/Social/hackerearth.svg",
+                    "title": "HackerEarth"
+                },
+                {
+                    "icon": "./images/icons/Social/hackerrank.svg",
+                    "title": "HackerRank"
+                },
+                {
+                    "icon": "./images/icons/Social/hashnode.svg",
+                    "title": "Hashnode"
+                },
+                {
+                    "icon": "./images/icons/Social/instagram.svg",
+                    "title": "Instagram"
+                },
+                {
+                    "icon": "./images/icons/Social/kaggle.svg",
+                    "title": "Kaggle"
+                },
+                {
+                    "icon": "./images/icons/Social/leet-code.svg",
+                    "title": "LeetCode"
+                },
+                {
+                    "icon": "./images/icons/Social/linked-in-alt.svg",
+                    "title": "LinkedIn (Alt)"
+                },
+                {
+                    "icon": "./images/icons/Social/linked-in.svg",
+                    "title": "LinkedIn"
+                },
+                {
+                    "icon": "./images/icons/Social/medium.svg",
+                    "title": "Medium"
+                },
+                {
+                    "icon": "./images/icons/Social/messenger.svg",
+                    "title": "Messenger"
+                },
+                {
+                    "icon": "./images/icons/Social/myspace-alt.svg",
+                    "title": "Myspace (Alt)"
+                },
+                {
+                    "icon": "./images/icons/Social/myspace.svg",
+                    "title": "Myspace"
+                },
+                {
+                    "icon": "./images/icons/Social/path.svg",
+                    "title": "Path"
+                },
+                {
+                    "icon": "./images/icons/Social/photo.svg",
+                    "title": "Photo"
+                },
+                {
+                    "icon": "./images/icons/Social/picasa.svg",
+                    "title": "Picasa"
+                },
+                {
+                    "icon": "./images/icons/Social/pinterest.svg",
+                    "title": "Pinterest"
+                },
+                {
+                    "icon": "./images/icons/Social/reddit.svg",
+                    "title": "Reddit"
+                },
+                {
+                    "icon": "./images/icons/Social/rss.svg",
+                    "title": "RSS"
+                },
+                {
+                    "icon": "./images/icons/Social/skype.svg",
+                    "title": "Skype"
+                },
+                {
+                    "icon": "./images/icons/Social/snapchat.svg",
+                    "title": "Snapchat"
+                },
+                {
+                    "icon": "./images/icons/Social/soundcloud.svg",
+                    "title": "SoundCloud"
+                },
+                {
+                    "icon": "./images/icons/Social/spotify.svg",
+                    "title": "Spotify"
+                },
+                {
+                    "icon": "./images/icons/Social/stack-overflow.svg",
+                    "title": "Stack Overflow"
+                },
+                {
+                    "icon": "./images/icons/Social/team.svg",
+                    "title": "Team"
+                },
+                {
+                    "icon": "./images/icons/Social/topcoder.svg",
+                    "title": "Topcoder"
+                },
+                {
+                    "icon": "./images/icons/Social/tumblr.svg",
+                    "title": "Tumblr"
+                },
+                {
+                    "icon": "./images/icons/Social/twitch.svg",
+                    "title": "Twitch"
+                },
+                {
+                    "icon": "./images/icons/Social/twitter-alt.svg",
+                    "title": "Twitter (Alt)"
+                },
+                {
+                    "icon": "./images/icons/Social/twitter.svg",
+                    "title": "Twitter"
+                },
+                {
+                    "icon": "./images/icons/Social/viddler.svg",
+                    "title": "Viddler"
+                },
+                {
+                    "icon": "./images/icons/Social/vimeo.svg",
+                    "title": "Vimeo"
+                },
+                {
+                    "icon": "./images/icons/Social/vine.svg",
+                    "title": "Vine"
+                },
+                {
+                    "icon": "./images/icons/Social/vk.svg",
+                    "title": "VK"
+                },
+                {
+                    "icon": "./images/icons/Social/whatsapp.svg",
+                    "title": "WhatsApp"
+                },
+                {
+                    "icon": "./images/icons/Social/wordpress.svg",
+                    "title": "WordPress"
+                },
+                {
+                    "icon": "./images/icons/Social/yahoo.svg",
+                    "title": "Yahoo"
+                },
+                {
+                    "icon": "./images/icons/Social/youtube.svg",
+                    "title": "YouTube"
+                }
+            ]
+        },
+        {
+            "title": "Software",
+            "items": [
+                {
+                    "icon": "./images/icons/Software/blender.svg",
+                    "title": "Blender"
+                },
+                {
+                    "icon": "./images/icons/Software/figma.svg",
+                    "title": "Figma"
+                },
+                {
+                    "icon": "./images/icons/Software/framer.svg",
+                    "title": "Framer"
+                },
+                {
+                    "icon": "./images/icons/Software/illustrator.svg",
+                    "title": "Illustrator"
+                },
+                {
+                    "icon": "./images/icons/Software/invision.svg",
+                    "title": "InVision"
+                },
+                {
+                    "icon": "./images/icons/Software/matlab.svg",
+                    "title": "MATLAB"
+                },
+                {
+                    "icon": "./images/icons/Software/photoshop.svg",
+                    "title": "Photoshop"
+                },
+                {
+                    "icon": "./images/icons/Software/postman.svg",
+                    "title": "Postman"
+                },
+                {
+                    "icon": "./images/icons/Software/sketch.svg",
+                    "title": "Sketch"
+                },
+                {
+                    "icon": "./images/icons/Software/solidworks.svg",
+                    "title": "SolidWorks"
+                },
+                {
+                    "icon": "./images/icons/Software/xd.svg",
+                    "title": "Adobe XD"
+                }
+            ]
+        },
+        {
+            "title": "Static Site Generators",
+            "items": [
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/11ty.svg",
+                    "title": "11ty"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/gatsby.svg",
+                    "title": "Gatsby"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/gridsome.svg",
+                    "title": "Gridsome"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/hexo.svg",
+                    "title": "Hexo"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/hugo.svg",
+                    "title": "Hugo"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/jekyll.svg",
+                    "title": "Jekyll"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/middleman.svg",
+                    "title": "Middleman"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/nextjs.svg",
+                    "title": "Next.js"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/nuxtjs.svg",
+                    "title": "Nuxt.js"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/sapper.svg",
+                    "title": "Sapper"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/scully.svg",
+                    "title": "Scully"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/sculpin.svg",
+                    "title": "Sculpin"
+                },
+                {
+                    "icon": "./images/icons/StaticSiteGenerators/vuepress.svg",
+                    "title": "VuePress"
+                }
+            ]
+        },
+        {
+            "title": "Testing",
+            "items": [
+                {
+                    "icon": "./images/icons/Testing/cypress.svg",
+                    "title": "Cypress"
+                },
+                {
+                    "icon": "./images/icons/Testing/jasmine.svg",
+                    "title": "Jasmine"
+                },
+                {
+                    "icon": "./images/icons/Testing/jest.svg",
+                    "title": "Jest"
+                },
+                {
+                    "icon": "./images/icons/Testing/karma.svg",
+                    "title": "Karma"
+                },
+                {
+                    "icon": "./images/icons/Testing/mocha.svg",
+                    "title": "Mocha"
+                },
+                {
+                    "icon": "./images/icons/Testing/puppeteer.svg",
+                    "title": "Puppeteer"
+                },
+                {
+                    "icon": "./images/icons/Testing/selenium.svg",
+                    "title": "Selenium"
+                }
+            ]
+        }
+    ]
+}
