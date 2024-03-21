@@ -13,6 +13,7 @@ import GlobalStyles from './theme/GlobalStyles.ts';
 import { lightTheme, darkTheme } from './theme/themes.ts';
 
 function App() {
+  window.global = window;
   const darkMode = useDarkMode(true);
 
   const router = createHashRouter([

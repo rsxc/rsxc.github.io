@@ -10,9 +10,7 @@ import configs from "@tsparticles/configs";
 import type { ISourceOptions } from "tsparticles";
 
 function MainApp() {
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	const [data, setData] = useState<any>(null);
-
 	useEffect(() => {
 		fetch(endpoints.routes, {
 			method: "GET",
