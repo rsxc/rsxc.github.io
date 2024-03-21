@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Chrono } from 'react-chrono';
 import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal';
@@ -14,7 +13,6 @@ function Education(props) {
   const { header } = props;
   const [data, setData] = useState(null);
   const [width, setWidth] = useState('50vw');
-  const [mode, setMode] = useState('VERTICAL_ALTERNATING');
 
   useEffect(() => {
     fetch(endpoints.education, {
@@ -23,10 +21,6 @@ function Education(props) {
       .then((res) => res.json())
       .then((res) => setData(res))
       .catch((err) => err);
-
-    if (window?.innerWidth < 576) {
-      setMode('VERTICAL');
-    }
 
     if (window?.innerWidth < 576) {
       setWidth('90vw');
@@ -63,32 +57,6 @@ function Education(props) {
                 </ul>
                 </>
               ) : null))}
-              
-              {/* <Chrono
-                hideControls
-                allowDynamicUpdate
-                useReadMore={false}
-                items={data.education}
-                cardHeight={250}
-                mode={mode}
-                theme={{
-                  primary: theme.accentColor,
-                  secondary: theme.accentColor,
-                  cardBgColor: theme.chronoTheme.cardBgColor,
-                  cardForeColor: theme.chronoTheme.cardForeColor,
-                  titleColor: theme.chronoTheme.titleColor,
-                }}
-              >
-                <div className="chrono-icons" style="height:300px">
-                  {data.education.map((education) => (education.icon ? (
-                    <img
-                      key={education.icon.src}
-                      src={education.icon.src}
-                      alt={education.icon.alt}
-                    />
-                  ) : null))}
-                </div>
-              </Chrono> */}
             </Container>
           </div>
         </Fade>
