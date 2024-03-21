@@ -3,9 +3,9 @@ import ReactMarkdown from 'react-markdown';
 import { Container, Col, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal';
-import Header from './Header';
-import endpoints from '../constants/endpoints';
-import FallbackSpinner from './FallbackSpinner';
+import Header from './Header.tsx';
+import endpoints from '../constants/endpoints.ts';
+import FallbackSpinner from './FallbackSpinner.tsx';
 
 const styles = {
   introTextContainer: {
@@ -29,7 +29,7 @@ const styles = {
 
 function About(props) {
   const { header } = props;
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
 
   const parseIntro = (text) => (
     <ReactMarkdown
@@ -58,7 +58,7 @@ function About(props) {
                   <Col style={styles.introImageContainer}>
                     <img src={data?.imageSource} alt="profile" style={styles.imageStyles} />
                   </Col>
-                  <Col style={styles.introTextContainer}>
+                  <Col style={styles.introTextContainer as React.CSSProperties}>
                     {parseIntro(data.about)}
                   </Col>
                 </Row>

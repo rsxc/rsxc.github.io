@@ -44,15 +44,15 @@ const ProjectCard = (props) => {
       <Card
         style={{
           ...styles.cardStyle,
-          backgroundColor: theme.cardBackground,
-          borderColor: theme.cardBorderColor,
+          backgroundColor: theme?.cardBackground,
+          borderColor: theme?.cardBorderColor,
         }}
-        text={theme.bsSecondaryVariant}
+        text={theme?.bsSecondaryVariant}
       >
         <Card.Img variant="top" src={project?.image} />
         <Card.Body>
           <Card.Title style={styles.cardTitleStyle}>{project.title}</Card.Title>
-          <Card.Text style={styles.cardTextStyle}>
+          <Card.Text style={styles.cardTextStyle as any}>
             {parseBodyText(project.bodyText)}
           </Card.Text>
         </Card.Body>
@@ -62,7 +62,7 @@ const ProjectCard = (props) => {
             <Button
               key={link.href}
               style={styles.buttonStyle}
-              variant={'outline-' + theme.bsSecondaryVariant}
+              variant={'outline-' + theme?.bsSecondaryVariant}
               onClick={() => window.open(link.href, '_blank')}
             >
               {link.text}
@@ -70,13 +70,13 @@ const ProjectCard = (props) => {
           ))}
         </Card.Body>
         {project.tags && (
-          <Card.Footer style={{ backgroundColor: theme.cardFooterBackground }}>
+          <Card.Footer style={{ backgroundColor: theme?.cardFooterBackground }}>
             {project.tags.map((tag) => (
               <Badge
                 key={tag}
                 pill
-                bg={theme.bsSecondaryVariant}
-                text={theme.bsPrimaryVariant}
+                bg={theme?.bsSecondaryVariant}
+                text={theme?.bsPrimaryVariant}
                 style={styles.badgeStyle}
               >
                 {tag}

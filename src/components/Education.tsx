@@ -3,15 +3,15 @@ import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal';
 import { ThemeContext } from 'styled-components';
-import endpoints from '../constants/endpoints';
-import Header from './Header';
-import FallbackSpinner from './FallbackSpinner';
+import endpoints from '../constants/endpoints.ts';
+import Header from './Header.tsx';
+import FallbackSpinner from './FallbackSpinner.tsx';
 import '../css/education.css';
 
 function Education(props) {
   const theme = useContext(ThemeContext);
   const { header } = props;
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
   const [width, setWidth] = useState('50vw');
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function Education(props) {
                   key={education.icon.src}
                   src={education.icon.src}
                   alt={education.icon.alt}
-                  style={{backgroundColor : theme.titleColor}}
+                  style={{backgroundColor : theme?.titleColor}}
                 />
                 <p> {education.title} </p>
                 <h1> {education.cardTitle}</h1>

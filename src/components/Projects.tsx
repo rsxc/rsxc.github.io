@@ -3,10 +3,10 @@ import { Container, Row, Button } from 'react-bootstrap';
 import { ThemeContext } from 'styled-components';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal/Fade';
-import Header from './Header';
-import endpoints from '../constants/endpoints';
-import ProjectCard from './projects/ProjectCard';
-import FallbackSpinner from './FallbackSpinner';
+import Header from './Header.tsx';
+import endpoints from '../constants/endpoints.ts';
+import ProjectCard from './projects/ProjectCard.tsx';
+import FallbackSpinner from './FallbackSpinner.tsx';
 
 const styles = {
   containerStyle: {
@@ -21,7 +21,7 @@ const styles = {
 const Projects = (props) => {
   const theme = useContext(ThemeContext);
   const { header } = props;
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
   const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
@@ -50,8 +50,8 @@ const Projects = (props) => {
               {!showMore
                 && (
                 <Button
-                  style={styles.showMoreStyle}
-                  variant={theme.bsSecondaryVariant}
+                  style={styles.showMoreStyle as any}
+                  variant={theme?.bsSecondaryVariant}
                   onClick={() => setShowMore(true)}
                 >
                   show more

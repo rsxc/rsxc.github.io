@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SocialIcon } from 'react-social-icons';
-import endpoints from '../constants/endpoints';
+import endpoints from '../constants/endpoints.ts';
 
 const styles = {
   iconStyle: {
@@ -11,7 +11,7 @@ const styles = {
 };
 
 function Social() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
 
   useEffect(() => {
     fetch(endpoints.social, {

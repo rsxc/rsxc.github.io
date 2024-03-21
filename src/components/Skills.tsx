@@ -3,9 +3,9 @@ import ReactMarkdown from 'react-markdown';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal';
 import { Container } from 'react-bootstrap';
-import Header from './Header';
-import endpoints from '../constants/endpoints';
-import FallbackSpinner from './FallbackSpinner';
+import Header from './Header.tsx';
+import endpoints from '../constants/endpoints.ts';
+import FallbackSpinner from './FallbackSpinner.tsx';
 
 const styles = {
   iconStyle: {
@@ -21,10 +21,11 @@ const styles = {
 
 function Skills(props) {
   const { header } = props;
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
 
   const renderSkillsIntro = (intro) => (
     <h4 style={styles.introTextContainer}>
+      {/* biome-ignore lint/correctness/noChildrenProp: <explanation> */}
       <ReactMarkdown children={intro} />
     </h4>
   );

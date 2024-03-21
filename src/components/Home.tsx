@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Typewriter from 'typewriter-effect';
 import Fade from 'react-reveal';
-import endpoints from '../constants/endpoints';
-import Social from './Social';
-import FallbackSpinner from './FallbackSpinner';
+import endpoints from '../constants/endpoints.ts';
+import Social from './Social.tsx';
+import FallbackSpinner from './FallbackSpinner.tsx';
 
 const styles = {
   nameStyle: {
@@ -22,7 +22,7 @@ const styles = {
 };
 
 function Home() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
 
   useEffect(() => {
     fetch(endpoints.home, {
@@ -35,7 +35,7 @@ function Home() {
 
   return data ? (
     <Fade>
-      <div style={styles.mainContainer}>
+      <div style={styles.mainContainer as React.CSSProperties}>
         <h1 style={styles.nameStyle}>{data?.name}</h1>
         <div style={{ flexDirection: 'row' }}>
           <h2 style={styles.inlineChild}>I&apos;m&nbsp;</h2>

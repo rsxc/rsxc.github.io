@@ -1,9 +1,9 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { Navbar, Nav, Container } from 'react-bootstrap';
+import { useEffect, useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import endpoints from '../constants/endpoints';
-import ThemeToggler from './ThemeToggler';
+import endpoints from '../constants/endpoints.ts';
+import ThemeToggler from './ThemeToggler.tsx';
 import {
   useLocation,
   useNavigate,
@@ -12,9 +12,9 @@ import {
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
-    let location = useLocation();
-    let navigate = useNavigate();
-    let params = useParams();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const params = useParams();
     return (
       <Component
         {...props}
@@ -58,7 +58,7 @@ const InternalNavLink = styled(NavLink)`
 
 const NavBar = () => {
   const theme = useContext(ThemeContext);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
@@ -101,8 +101,7 @@ const NavBar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto" />
           <Nav>
-            {data
-              && data.sections?.map((section, index) => (section?.type === 'link' ? (
+            {data?.sections?.map((section, index) => (section?.type === 'link' ? (
                 <ExternalNavLink
                   key={section.title}
                   href={section.href}
@@ -118,8 +117,8 @@ const NavBar = () => {
                 <InternalNavLink
                   key={section.title}
                   onClick={() => setExpanded(false)}
-                  exact={index === 0 ? "true" : "false"}
-                  activeclassname="navbar__link--active"
+                  //exact={index === 0 ? "true" : "false"}
+                 // activeclassname="navbar__link--active"
                   className="navbar__link"
                   to={section.href}
                   theme={theme}
