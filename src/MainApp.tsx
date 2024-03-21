@@ -28,8 +28,8 @@ function MainApp() {
 				<Particles
 					options={
 						values.darkMode.value === true
-							? configs.amongUs as ISourceOptions
-							: configs.emitterAngled as ISourceOptions
+							? configs.amongUs as unknown as ISourceOptions
+							: configs.emitterAngled as unknown as ISourceOptions
 					}
 				/>
 			</Suspense>
