@@ -6,6 +6,7 @@ import Fade from 'react-reveal';
 import Header from './Header.tsx';
 import endpoints from '../constants/endpoints.ts';
 import FallbackSpinner from './FallbackSpinner.tsx';
+import FadingTextComponent from './fading-text.tsx';
 
 const styles = {
   introTextContainer: {
@@ -59,7 +60,7 @@ function About(props) {
                     <img src={data?.imageSource} alt="profile" style={styles.imageStyles} />
                   </Col>
                   <Col style={styles.introTextContainer as React.CSSProperties}>
-                    {parseIntro(data.about)}
+                    <FadingTextComponent text={data.about} />
                   </Col>
                 </Row>
               </Fade>
