@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
 import { Container, Col, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal';
@@ -31,12 +30,6 @@ const styles = {
 function About(props) {
   const { header } = props;
   const [data, setData] = useState<any>(null);
-
-  const parseIntro = (text) => (
-    <ReactMarkdown
-      children={text}
-    />
-  );
 
   useEffect(() => {
     fetch(endpoints.about, {
