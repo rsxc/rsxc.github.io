@@ -47,7 +47,7 @@ function Education(props) {
                   key={education.icon.src}
                   src={education.icon.src}
                   alt={education.icon.alt}
-                  style={{backgroundColor : theme?.titleColor}}
+                  style={{backgroundColor : theme?.titleColor, display: 'block', marginLeft: 'auto', marginRight: 'auto'}}
                 />
                 <p> {education.title} </p>
                 <h1> {education.cardTitle}</h1>
