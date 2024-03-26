@@ -1,36 +1,24 @@
-import { useEffect, useState, useContext } from 'react';
-import { Container } from 'react-bootstrap';
-import PropTypes from 'prop-types';
-import Fade from 'react-reveal';
-import { ThemeContext } from 'styled-components';
-import endpoints from '../constants/endpoints.ts';
-import Header from './Header.tsx';
-import FallbackSpinner from './FallbackSpinner.tsx';
-import '../css/education.css';
+import { useEffect, useState, useContext } from "react";
+import { Container } from "react-bootstrap";
+import Fade from "react-reveal";
+import { ThemeContext } from "styled-components";
+import endpoints from "../constants/endpoints.ts";
+import Header from "./Header.tsx";
+import FallbackSpinner from "./FallbackSpinner.tsx";
+import "../css/education.css";
 
 function Education(props) {
   const theme = useContext(ThemeContext);
   const { header } = props;
   const [data, setData] = useState<any>(null);
-  const [width, setWidth] = useState('50vw');
 
   useEffect(() => {
     fetch(endpoints.education, {
-      method: 'GET',
+      method: "GET",
     })
       .then((res) => res.json())
       .then((res) => setData(res))
       .catch((err) => err);
-
-    if (window?.innerWidth < 576) {
-      setWidth('90vw');
-    } else if (window?.innerWidth >= 576 && window?.innerWidth < 768) {
-      setWidth('90vw');
-    } else if (window?.innerWidth >= 768 && window?.innerWidth < 1024) {
-      setWidth('75vw');
-    } else {
-      setWidth('50vw');
-    }
   }, []);
 
   return (
@@ -38,35 +26,29 @@ function Education(props) {
       <Header title={header} />
       {data ? (
         <Fade>
-          <div style={{ width }} className="section-content-container">
-            <Container>
-              
-               {data.education.map((education) => (education.icon ? (
-                <>
-                <img
-                  key={education.icon.src}
-                  src={education.icon.src}
-                  alt={education.icon.alt}
-                  style={{backgroundColor : theme?.titleColor, display: 'block', marginLeft: 'auto', marginRight: 'auto'}}
-                />
-                <p> {education.title} </p>
-                <h1> {education.cardTitle}</h1>
-                <p> {education.cardSubtitle}</p>
-                <ul>
-                {education.cardDetailedText.map((degree) => (<li> {degree} </li>))}
-                </ul>
-                </>
-              ) : null))}
+          <div className={`section-content-container ${theme.isDark ? "dark" : "light"}`}>
+            <Container className="flex flex-col items-center gap-8 px-4 py-20 md:pt-28">
+              {data.education.map((education) => (
+                <div key={education.icon.src} className="flex flex-col items-center gap-2 w-full md:w-2/3">
+                  <img src={education.icon.src} alt={education.icon.alt} className="mx-auto w-50" />
+                  <p className={`text-center text-2xl font-semibold ${theme.textClass}`}>{education.title}</p>
+                  <h1 className={`text-3xl font-bold ${theme.textClass}`}>{education.cardTitle}</h1>
+                  <p className={`text-xl ${theme.textClass}`}>{education.cardSubtitle} </p>
+                  <ul className="flex flex-col gap-2">
+                    {education.cardDetailedText.map((degree) => (
+                      <li className={`text-lg ${theme.textClass}`}>{degree}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </Container>
           </div>
         </Fade>
-      ) : <FallbackSpinner /> }
+      ) : (
+        <FallbackSpinner />
+      )}
     </>
   );
 }
-
-Education.propTypes = {
-  header: PropTypes.string.isRequired,
-};
 
 export default Education;
