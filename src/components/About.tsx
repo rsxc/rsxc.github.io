@@ -28,12 +28,12 @@ function About(props) {
           {data
             ? (
               <Fade>
-                <Row>
-                  <Col className="flex justify-center">
-                    <img src={data?.imageSource} alt="profile" className="rounded-full" />
-                  </Col>
+                <Row md={1} lg={2} className="flex-md-row-reverse flex-column">
                   <Col className="text-left pt-4">
                     <FadingTextComponent text={data.about} />
+                  </Col>
+                  <Col className="flex justify-center">
+                    <img src={data?.imageSource} alt="profile" className="rounded-full" />
                   </Col>
                 </Row>
               </Fade>
@@ -50,3 +50,5 @@ About.propTypes = {
 };
 
 export default About;
+
+
