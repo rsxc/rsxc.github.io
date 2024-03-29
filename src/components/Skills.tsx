@@ -49,18 +49,22 @@ function Skills(props) {
               {renderSkillsIntro(data.intro)}
               {data.skills?.map((rows) => (
                 <div key={rows.title}>
-                  <br />
-                  <h3>{rows.title}</h3>
-                  {rows.items.map((item) => (
-                    <div key={item.title} style={{ display: 'inline-block' }}>
-                      <img
-                        style={styles.iconStyle}
-                        src={item.icon}
-                        alt={item.title}
-                      />
-                      <p>{item.title}</p>
-                    </div>
-                  ))}
+                  {rows.show === undefined || rows.show ? (
+                    <>
+                      <br />
+                      <h3>{rows.title}</h3>
+                      {rows.items.map((item) => (
+                        <div key={item.title} style={{ display: 'inline-block' }}>
+                          <img
+                            style={styles.iconStyle}
+                            src={item.icon}
+                            alt={item.title}
+                          />
+                          <p>{item.title}</p>
+                        </div>
+                      ))}
+                    </>
+                  ) : null}
                 </div>
               ))}
             </Container>

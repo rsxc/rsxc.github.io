@@ -523,6 +523,7 @@
             ]
         },
         {
+            "show": false,
             "title": "Social",
             "items": [
                 {
