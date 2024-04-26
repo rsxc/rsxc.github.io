@@ -22,6 +22,25 @@
                 "Tailwind",
                 "GitHub"
             ]
+        },
+        {
+            "image" : "images/projects/portfolio-poster.png",
+            "title": "Upcoming Project",
+            "bodyText": " Upcoming Projects",
+            "links": [
+                {
+                    "text": "GitHub",
+                    "href": "https://github.com/rsxc/rsxc.github.io"
+                },
+                {
+                    "text": "Live",
+                    "href": "/"
+                }
+            ],
+            "tags" : [
+                "Programming",
+                "Problem Solving"
+            ]
         }
     ]
 }
