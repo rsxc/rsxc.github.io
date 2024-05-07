@@ -4,6 +4,7 @@ import Fade from 'react-reveal';
 import endpoints from '../constants/endpoints.ts';
 import Social from './Social.tsx';
 import FallbackSpinner from './FallbackSpinner.tsx';
+import Chat from './Chat.tsx';
 
 const styles = {
   nameStyle: {
@@ -48,6 +49,7 @@ function Home() {
           />
         </div>
         <Social />
+        <Chat />
       </div>
     </Fade>
   ) : <FallbackSpinner />;

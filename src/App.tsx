@@ -11,6 +11,7 @@ import MainApp from './MainApp.tsx';
 import GlobalStyles from './theme/GlobalStyles.ts';
 import { lightTheme, darkTheme } from './theme/themes.ts';
 
+
 function App() {
   (window as any).global = window;
   const darkMode = useDarkMode(true);
