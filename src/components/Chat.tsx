@@ -51,7 +51,7 @@ const Chat = () => {
             </div>
             <div className="flex flex-col items-center mt-4">
                 <div className="flex border border-gray-300 rounded p-2 m-2 width">
-                    {output ? <FadingTextComponent text={output}/> : <FadingTextComponent text="Loading..."/>}
+                    {output ? <FadingTextComponent text={output}/> : <></>}
                 </div>
             </div>
         </div>
