@@ -23,8 +23,6 @@ function MainApp() {
 					{method: 'GET'}
 				);
 				const geoData = await geoRes.json();
-				console.log(geoData);
-				// example create data
 				const logdata = {
 					"VisitorIP": geoData?.ip || "test",
 					"UserAgent": navigator.userAgent || "test",
@@ -39,7 +37,6 @@ function MainApp() {
 					"Latitude": geoData?.location?.latitude || "test",
 					"PageVisited": location.href || "test"
 				};
-				console.log(logdata);
 				const pb = new PocketBase('https://raghav.pockethost.io');
 				pb.collection('visits').create(logdata);
 			} catch (err) {
