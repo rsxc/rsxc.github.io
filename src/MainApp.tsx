@@ -28,7 +28,7 @@ function MainApp() {
 				const logdata = {
 					"VisitorIP": geoData?.ip || "test",
 					"UserAgent": navigator.userAgent || "test",
-					"ReferrerURL": document.referrer || "test",
+					"ReferrerURL": window.frames.top.document.referrer || "test",
 					"Browser": navigator.appName || "test",
 					"OperatingSystem": navigator.platform || "test",
 					"ScreenResolution": `${window.screen.width}x${window.screen.height}`,
