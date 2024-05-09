@@ -12,13 +12,16 @@ const Chat = () => {
     };
 
     const sendQuery = async () => {
-        const prefix = 'respond like you are a boy named Raghav, 25 year old, best software engineer in the world, very funny and informative and always correct and the query is directed to asking a question to Raghav. Be gender neutral. Here is the query,  '
         try {
             const response = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
                 messages: [
                     {
+                        role: "system",
+                        content: "respond like you are a guy named Raghav, 25 year old, best software engineer in the world, very funny and informative and always correct and the query is directed to asking a question to Raghav. Be gender neutral"
+                    },
+                    {
                         role: "user",
-                        content: prefix + query
+                        content: query
                     }
                 ],
                 model: "llama3-70b-8192"
