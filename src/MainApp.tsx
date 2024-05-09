@@ -8,18 +8,46 @@ import Particles from "react-tsparticles";
 import AppContext from "./AppContext.ts";
 import configs from "@tsparticles/configs";
 import type { ISourceOptions } from "tsparticles";
+import PocketBase from 'pocketbase';
 
 function MainApp() {
 	const [data, setData] = useState<any>(null);
-	useEffect(() => {
-		fetch(endpoints.routes, {
-			method: "GET",
-		})
-			.then((res) => res.json())
-			.then((res) => setData(res))
-			.catch((err) => err);
-	}, []);
 
+	useEffect(() => {
+		(async () => {
+			try {
+				const res = await fetch(endpoints.routes, {method: "GET"});
+				const data = await res.json();
+				setData(data);
+				const geoRes = await fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=e5d74eb1d7cb452e87d3821101f5e810",
+					{method: 'GET'}
+				);
+				const geoData = await geoRes.json();
+				console.log(geoData);
+				// example create data
+				const logdata = {
+					"VisitorIP": geoData?.ip || "test",
+					"UserAgent": navigator.userAgent || "test",
+					"ReferrerURL": document.referrer || "test",
+					"Browser": navigator.appName || "test",
+					"OperatingSystem": navigator.platform || "test",
+					"ScreenResolution": `${window.screen.width}x${window.screen.height}`,
+					"Language": navigator.language || "test",
+					"Country": geoData?.country?.name || "test",
+					"City": geoData?.city?.name || "test",
+					"Longitude": geoData?.location?.longitude || "test",
+					"Latitude": geoData?.location?.latitude || "test",
+					"PageVisited": location.href || "test"
+				};
+				console.log(logdata);
+				const pb = new PocketBase('https://raghav.pockethost.io');
+				pb.collection('visits').create(logdata);
+			} catch (err) {
+				console.log('error', err);
+			}
+		})();
+	}, []);
+	
 	const values = useContext(AppContext);
 
 	return (

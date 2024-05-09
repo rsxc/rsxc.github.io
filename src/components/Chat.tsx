@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import FadingTextComponent from './fading-text.tsx';
+import PocketBase from 'pocketbase';
 
 const Chat = () => {
     const [query, setQuery] = useState('');
-    const [output, setOutput] = useState('');
+    const [output, setOutput] = useState<string | null>(null);
     const apiKey = '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';
 
     const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +31,18 @@ const Chat = () => {
                     'Authorization': `Bearer ${apiKey}`
                 }
             });
-            setOutput(response.data.choices[0]?.message?.content || "");
+
+            const responseOutput = response.data.choices[0]?.message?.content;
+            if (responseOutput) {
+                setOutput(responseOutput);
+                const pb = new PocketBase('https://raghav.pockethost.io');
+
+                const data = {
+                    "userQuery": query,
+                    "aiResponse": responseOutput
+                };
+                pb.collection('aiqueries').create(data);
+            }
         } catch (error) {
             console.error(error);
             setOutput('Error occurred while sending query.');
@@ -54,7 +66,7 @@ const Chat = () => {
             </div>
             <div className="flex flex-col items-center mt-4">
                 <div className="flex border border-gray-300 rounded p-2 m-2 width">
-                    {output ? <FadingTextComponent text={output}/> : <></>}
+                    {output ? <FadingTextComponent text={output} /> : <></>}
                 </div>
             </div>
         </div>
