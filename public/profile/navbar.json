@@ -30,6 +30,10 @@
             "href": "/about"
         },
         {
+            "title": "Code_Editor",
+            "href": "/code"
+        },
+        {
             "title": "Resume",
             "href": "resume.pdf",
             "type": "link"

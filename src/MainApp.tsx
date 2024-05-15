@@ -9,6 +9,7 @@ import AppContext from "./AppContext.ts";
 import configs from "@tsparticles/configs";
 import type { ISourceOptions } from "tsparticles";
 import PocketBase from 'pocketbase';
+import Code from "./components/Code.tsx";
 
 function MainApp() {
 	const [data, setData] = useState<any>(null);
@@ -51,6 +52,7 @@ function MainApp() {
 		<div className="MainApp">
 			<Suspense fallback={<FallbackSpinner />}>
 				<Particles
+					style={{zIndex: -1}}
 					options={
 						values.darkMode.value === true
 							? configs.amongUs as unknown as ISourceOptions
@@ -75,6 +77,7 @@ function MainApp() {
 								/>
 							);
 						})}
+						<Route path="/code" element={<Code />} />
 					</Routes>
 				</Suspense>
 			</main>
