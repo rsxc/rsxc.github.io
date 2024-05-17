@@ -24,6 +24,25 @@
             ]
         },
         {
+            "image" : "images/projects/geomesa.gif",
+            "title": "Live Rideshare FREE WebApp",
+            "bodyText": "A free rideshare webapp capable of handling billions of rides and in realtime",
+            "links": [
+                {
+                    "text": "GitHub",
+                    "href": "https://github.com/rsxc/rsxc.github.io"
+                },
+                {
+                    "text": "ClosedSource",
+                    "href": "/map"
+                }
+            ],
+            "tags" : [
+                "GeoMesa, Hadoop, Kafka, PostGIS, Postgres",
+                "Ride Share"
+            ]
+        },
+        {
             "image" : "images/projects/upcomingProject.jpg",
             "title": "Upcoming Project",
             "bodyText": " Upcoming Projects",
