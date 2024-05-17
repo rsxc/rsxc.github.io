@@ -10,6 +10,7 @@ import configs from "@tsparticles/configs";
 import type { ISourceOptions } from "tsparticles";
 import PocketBase from 'pocketbase';
 import Code from "./components/Code.tsx";
+import Map from "./components/Map.tsx";
 
 function MainApp() {
 	const [data, setData] = useState<any>(null);
@@ -78,6 +79,7 @@ function MainApp() {
 							);
 						})}
 						<Route path="/code" element={<Code />} />
+						<Route path="/map" element={<Map />} />
 					</Routes>
 				</Suspense>
 			</main>
