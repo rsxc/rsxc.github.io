@@ -33,13 +33,33 @@
                     "href": "https://github.com/rsxc/rsxc.github.io"
                 },
                 {
-                    "text": "ClosedSource",
-                    "href": "/map"
+                    "text": "View Progress",
+                    "href": "/#/map"
                 }
             ],
             "tags" : [
                 "GeoMesa, Hadoop, Kafka, PostGIS, Postgres",
                 "Ride Share"
+            ]
+        },
+        {
+            "image" : "images/projects/geoDistributedCache.png",
+            "title": "Geo Distributed Cache",
+            "bodyText": "A geo distributed cache to increase data availability at multiple location with real time updates.",
+            "links": [
+                {
+                    "text": "GitHub",
+                    "href": "https://github.com/rsxc/rsxc.github.io"
+                },
+                {
+                    "text": "Similar Product, Redis",
+                    "href": "https://redis.io/glossary/distributed-caching/"
+                }
+            ],
+            "tags" : [
+                "Python", 
+                "Geo Distributed Cache",
+                "Redis"
             ]
         },
         {
