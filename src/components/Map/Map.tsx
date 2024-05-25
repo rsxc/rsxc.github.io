@@ -134,7 +134,7 @@ const Map: React.FC = () => {
   const storedRides = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
   return (
-    <div className="grid grid-cols-2 grid-rows-1 items-center justify-start z-0 h-screen min-h-screen">
+    <div className="grid grid-cols-2 grid-rows-1 items-center justify-start z-0 h-screen min-h-screen w-screen">
       <div className="grid-column-1 border-2 border-white mx-10">
         {position && (
           <MapContainer center={position} zoom={13} style={{ height: "80vh", margin: "10px" }}>
@@ -160,7 +160,7 @@ const Map: React.FC = () => {
         )}
       </div>
       <div className="grid-column-2">
-        <CreateRide origin={origin} destination={destination} />
+        {/* <CreateRide origin={origin} destination={destination} /> */}
       </div>
     </div>
   );
