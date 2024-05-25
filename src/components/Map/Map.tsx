@@ -4,50 +4,21 @@ import "leaflet/dist/leaflet.css";
 import { useMapEvents } from "react-leaflet";
 import { Polyline } from "react-leaflet";
 import CreateRide from "./CreateRide";
-import { CircleMarker, Tooltip } from "react-leaflet";
+import { CircleMarker, Tooltip, Circle } from "react-leaflet";
+import initializeLocalStorage from "./LocalStorageRides";
 
 const LOCAL_STORAGE_KEY = "rides";
 
-const initializeLocalStorage = () => {
-  const storedRides = localStorage.getItem(LOCAL_STORAGE_KEY);
-  if (!storedRides) {
-    const sampleRides = [
-      {
-        currentDate: new Date().toLocaleDateString(),
-        currentTime: new Date().toLocaleTimeString(),
-        driverName: "Driver A",
-        date: "2022-01-01",
-        time: "10:00",
-        comment: "comment A",
-        origin: { lat: 43.46312557670116, lng: -80.52313327789308 },
-        destination: { lat: 43.588934042894586, lng: -79.66461181640626 },
-      },
-      {
-        currentDate: new Date().toLocaleDateString(),
-        currentTime: new Date().toLocaleTimeString(),
-        driverName: "Driver B",
-        date: "2022-01-02",
-        time: "12:00",
-        comment: "comment B",
-        origin: { lat: 43.45158510015951, lng: -80.49133300781251 },
-        destination: { lat: 43.6983093157438, lng: -79.72915649414064 },
-      },
-      {
-        currentDate: new Date().toLocaleDateString(),
-        currentTime: new Date().toLocaleTimeString(),
-        driverName: "Driver C",
-        date: "2022-01-03",
-        time: "14:00",
-        comment: "comment C",
-        origin: { lat: 43.35496565681908, lng: -80.30456542968751 },
-        destination: { lat: 43.705929901862504, lng: -80.37666320800783 },
-      },
-    ];
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(sampleRides));
-  }
-};
-
-function LocationMarker({ origin, destination, setOrigin, setDestination }) {
+function LocationMarker({
+  origin,
+  destination,
+  setOrigin,
+  setDestination,
+  originBuffer,
+  destinationBuffer,
+  setOriginBuffer,
+  setDestinationBuffer,
+}) {
   useMapEvents({
     click(e: any) {
       if (!origin) {
@@ -61,39 +32,59 @@ function LocationMarker({ origin, destination, setOrigin, setDestination }) {
   return (
     <>
       {origin && (
-        <Marker
-          title={"Origin"}
-          position={origin}
-          draggable={true}
-          eventHandlers={{
-            dragend: (e) => {
-              setOrigin(e.target.getLatLng());
-            },
-          }}
-        >
-          <Popup>
-            <p>
-              Origin: {origin.lat}, {origin.lng}
-            </p>
-          </Popup>
-        </Marker>
+        <>
+          <Marker
+            title={"Origin"}
+            position={origin}
+            draggable={true}
+            eventHandlers={{
+              dragend: (e) => {
+                setOrigin(e.target.getLatLng());
+              },
+            }}
+          >
+            <Popup>
+              <p>
+                Origin: {origin.lat}, {origin.lng}
+              </p>
+            </Popup>
+          </Marker>
+          <Circle
+            center={origin}
+            radius={originBuffer}
+            color="red"
+            fillColor="red"
+            fillOpacity={0.5}
+            stroke={false}
+          ></Circle>
+        </>
       )}
       {destination && (
-        <Marker
-          position={destination}
-          draggable={true}
-          eventHandlers={{
-            dragend: (e) => {
-              setDestination(e.target.getLatLng());
-            },
-          }}
-        >
-          <Popup>
-            <p>
-              Destination: {destination.lat}, {destination.lng}
-            </p>
-          </Popup>
-        </Marker>
+        <>
+          <Marker
+            position={destination}
+            draggable={true}
+            eventHandlers={{
+              dragend: (e) => {
+                setDestination(e.target.getLatLng());
+              },
+            }}
+          >
+            <Popup>
+              <p>
+                Destination: {destination.lat}, {destination.lng}
+              </p>
+            </Popup>
+          </Marker>
+          <Circle
+            center={destination}
+            radius={destinationBuffer}
+            color="red"
+            fillColor="red"
+            fillOpacity={0.5}
+            stroke={false}
+          ></Circle>
+        </>
       )}
       {origin && destination && <Polyline positions={[origin, destination]} />}
     </>
@@ -103,7 +94,9 @@ function LocationMarker({ origin, destination, setOrigin, setDestination }) {
 const Map: React.FC = () => {
   const [position, setPosition] = useState(null);
   const [origin, setOrigin] = useState(null);
+  const [originBuffer, setOriginBuffer] = useState(null);
   const [destination, setDestination] = useState(null);
+  const [destinationBuffer, setDestinationBuffer] = useState(null);
 
   const getUserLocation = async () => {
     try {
@@ -144,6 +137,10 @@ const Map: React.FC = () => {
               destination={destination}
               setOrigin={setOrigin}
               setDestination={setDestination}
+              originBuffer={originBuffer}
+              setOriginBuffer={setOriginBuffer}
+              destinationBuffer={destinationBuffer}
+              setDestinationBuffer={setDestinationBuffer}
             />
             {storedRides.map((ride, index) => (
               <>
@@ -159,7 +156,31 @@ const Map: React.FC = () => {
           </MapContainer>
         )}
       </div>
-      <div className="grid-column-2">
+      <div className="grid-column-2 align-left">
+        <div>
+          <input
+            type="range"
+            id="originBuffer"
+            name="originBuffer"
+            min="999"
+            max="9999"
+            className="bg-white"
+            onChange={(e) => setOriginBuffer(parseInt(e.target.value))}
+          />
+          <label> Origin Buffer </label>
+        </div>
+        <div>
+          <input
+            type="range"
+            id="destinationBuffer"
+            name="destinationBuffer"
+            min="999"
+            max="9999"
+            className="bg-white"
+            onChange={(e) => setDestinationBuffer(parseInt(e.target.value))}
+          />
+          <label> Destination Buffer </label>
+        </div>
         {/* <CreateRide origin={origin} destination={destination} /> */}
       </div>
     </div>
