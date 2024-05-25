@@ -26,21 +26,14 @@ const Table = ({ origin, destination }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      newDriver.driverName &&
-      newDriver.date &&
-      newDriver.time &&
-      newDriver.comment &&
-      origin &&
-      destination
-    ) {
+    if (newDriver.driverName && newDriver.date && newDriver.time && newDriver.comment && origin && destination) {
       const newDriver1 = {
         ...newDriver,
         currentDate: new Date().toLocaleDateString(),
         currentTime: new Date().toLocaleTimeString(),
         origin,
         destination,
-      }
+      };
       setDrivers([...drivers, newDriver1]);
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(drivers));
     } else {
@@ -49,12 +42,7 @@ const Table = ({ origin, destination }) => {
   };
 
   const isFormValid =
-    newDriver.driverName &&
-    newDriver.date &&
-    newDriver.time &&
-    newDriver.comment &&
-    origin &&
-    destination;
+    newDriver.driverName && newDriver.date && newDriver.time && newDriver.comment && origin && destination;
 
   return (
     <div className="z-0">
@@ -75,8 +63,12 @@ const Table = ({ origin, destination }) => {
             <div>{driver.date}</div>
             <div>{driver.time}</div>
             <div>{driver.comment}</div>
-            <div>{driver.origin.lat}, {driver.origin.lng}</div>
-            <div>{driver.destination.lat}, {driver.destination.lng}</div>
+            <div>
+              {driver.origin.lat}, {driver.origin.lng}
+            </div>
+            <div>
+              {driver.destination.lat}, {driver.destination.lng}
+            </div>
           </React.Fragment>
         ))}
         <div>{new Date().toLocaleDateString()}</div>
@@ -195,43 +187,55 @@ function LocationMarker({ origin, destination, setOrigin, setDestination }) {
 }
 
 const Map: React.FC = () => {
-  const [position, setPosition] = useState<LatLngExpression>({ lat: 51.505, lng: -0.09 });
+  const [position, setPosition] = useState(null);
   const [origin, setOrigin] = useState(null);
   const [destination, setDestination] = useState(null);
 
-  useEffect(() => {
-    const getUserLocation = async () => {
-      try {
-        const response = await fetch("https://ipinfo.io/json");
-        const data = await response.json();
-        const { loc } = data;
-        const [lat, lon] = loc.split(",");
-        setPosition({ lat: Number(lat), lng: Number(lon) });
-      } catch (error) {
-        console.error(error);
+  const getUserLocation = async () => {
+    try {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            setPosition({ lat: latitude, lng: longitude });
+            console.log(position);
+          },
+          (error) => {
+            console.error(error);
+            console.log("Error getting user's position");
+          }
+        );
+      } else {
+        console.log("Geolocation is not supported by this browser");
       }
-    };
+    } catch (error) {
+      console.error(error);
+      console.log("Error getting user's position");
+    }
+  };
+
+  useEffect(() => {
     getUserLocation();
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-full w-full">
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start" }}>
-        <MapContainer
-          center={position}
-          zoom={13}
-          style={{ height: "90vh", width: "90vh", maxHeight: "100%", maxWidth: "100%", zIndex: 0 }}
-        >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <LocationMarker
-            origin={origin}
-            destination={destination}
-            setOrigin={setOrigin}
-            setDestination={setDestination}
-          />
-        </MapContainer>
+    <div className="grid grid-cols-2 grid-rows-1 items-center justify-start z-0 h-screen min-h-screen">
+      <div className="grid-column-1 border-2 border-white mx-10">
+        {position && (
+          <MapContainer center={position} zoom={13} style={{ height: "80vh", margin: "10px" }}>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <LocationMarker
+              origin={origin}
+              destination={destination}
+              setOrigin={setOrigin}
+              setDestination={setDestination}
+            />
+          </MapContainer>
+        )}
+      </div>
+      <div className="grid-column-2">
         <Table origin={origin} destination={destination} />
-     </div>
+      </div>
     </div>
   );
 };
