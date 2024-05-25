@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const LOCAL_STORAGE_KEY = "drivers";
 
-const Table = ({ origin, destination }) => {
+const CreateRide = ({ origin, destination }) => {
   const [drivers, setDrivers] = useState(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []);
   const [newDriver, setNewDriver] = useState({
     currentDate: "",
@@ -128,4 +128,4 @@ const Table = ({ origin, destination }) => {
   );
 };
 
-export default Table;
+export default CreateRide;
