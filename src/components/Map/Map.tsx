@@ -6,6 +6,7 @@ import { Polyline } from "react-leaflet";
 import CreateRide from "./CreateRide";
 import { CircleMarker, Tooltip, Circle } from "react-leaflet";
 import initializeLocalStorage from "./LocalStorageRides";
+import { point, distance } from "@turf/turf";
 
 const LOCAL_STORAGE_KEY = "rides";
 
@@ -97,6 +98,7 @@ const Map: React.FC = () => {
   const [originBuffer, setOriginBuffer] = useState(null);
   const [destination, setDestination] = useState(null);
   const [destinationBuffer, setDestinationBuffer] = useState(null);
+  const [drawRides, setDrawRides] = useState(null);
 
   const getUserLocation = async () => {
     try {
@@ -123,8 +125,19 @@ const Map: React.FC = () => {
   useEffect(() => {
     getUserLocation();
     initializeLocalStorage();
-  }, []);
-  const storedRides = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const storedRides = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (origin?.lat && origin?.lng && destination?.lat && destination?.lng) {
+      const filteredRides = storedRides?.filter((ride) => {
+        const bufferDistance = originBuffer / 1000;
+        const originPoint = point([origin?.lng, origin?.lat]);
+        const rideOriginPoint = point([ride.origin?.lng, ride.origin?.lat]);
+        const d = distance(originPoint, rideOriginPoint);
+        return d <= bufferDistance;
+      });
+
+      setDrawRides(filteredRides);
+    }
+  });
 
   return (
     <div className="grid grid-cols-2 grid-rows-1 items-center justify-start z-0 h-screen min-h-screen w-screen">
@@ -142,7 +155,7 @@ const Map: React.FC = () => {
               destinationBuffer={destinationBuffer}
               setDestinationBuffer={setDestinationBuffer}
             />
-            {storedRides.map((ride, index) => (
+            {drawRides?.map((ride, index) => (
               <>
                 <Polyline key={index} positions={[ride.origin, ride.destination]} />
                 <CircleMarker center={ride.origin} pathOptions={{ color: "red" }} radius={5}>
