@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import { useMapEvents } from "react-leaflet";
 import { Polyline } from "react-leaflet";
 import CreateRide from "./CreateRide";
+import { CircleMarker, Tooltip } from "react-leaflet";
 
 const LOCAL_STORAGE_KEY = "rides";
 
@@ -145,7 +146,15 @@ const Map: React.FC = () => {
               setDestination={setDestination}
             />
             {storedRides.map((ride, index) => (
-              <Polyline key={index} positions={[ride.origin, ride.destination]} />
+              <>
+                <Polyline key={index} positions={[ride.origin, ride.destination]} />
+                <CircleMarker center={ride.origin} pathOptions={{ color: "red" }} radius={5}>
+                  <Tooltip>Origin</Tooltip>
+                </CircleMarker>
+                <CircleMarker center={ride.destination} pathOptions={{ color: "green" }} radius={5}>
+                  <Tooltip>Destination</Tooltip>
+                </CircleMarker>
+              </>
             ))}
           </MapContainer>
         )}
