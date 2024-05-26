@@ -86,7 +86,7 @@ function LocationMarker({
           ></Circle>
         </>
       )}
-      {origin && destination && <Polyline positions={[origin, destination]} />}
+      {origin && destination && <Polyline pathOptions={{ color: "white" }} positions={[origin, destination]} />}
     </>
   );
 }
@@ -102,6 +102,7 @@ const Map: React.FC = () => {
   const [rideDate, setRideDate] = useState(null);
   const [rideTime, setRideTime] = useState(null);
   const [rideTimeBuffer, setRideTimeBuffer] = useState(0);
+  const [storedRides, setStoredRides] = useState([]);
 
   const getUserLocation = async () => {
     try {
@@ -133,17 +134,19 @@ const Map: React.FC = () => {
 
   useEffect(() => {
     getUserLocation();
-  }, [position]);
+  }, []);
 
   useEffect(() => {
     initializeLocalStorage();
-    const storedRides = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    setStoredRides(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)));
+  }, []);
     
+    useEffect(() => {
     if (origin?.lat && origin?.lng && destination?.lat && destination?.lng && rideDate && rideTime) {
       const filteredRides = storedRides?.filter((ride) => {
         const bufferDistance = originBuffer / 1000; // meter to km
         const destBufferDistance = destinationBuffer / 1000; // meter to km
-        const timeBuffer = rideTimeBuffer * 60 * 1000; // convert to milliseconds
+        const timeBuffer = rideTimeBuffer * 60 * 60 * 1000; // convert to milliseconds
         const rideDateAndTime = new Date(`${rideDate}T${rideTime}:00`).getTime();
         const currentRideTime = new Date(`${ride.date}T${ride.time}:00`).getTime();
         const isWithinDateAndTime = Math.abs(currentRideTime - rideDateAndTime) <= timeBuffer;
@@ -153,12 +156,13 @@ const Map: React.FC = () => {
         const rideDestPoint = point([ride.destination?.lng, ride.destination?.lat]);
         const originWithinBuffer = distance(originPoint, rideOriginPoint) <= bufferDistance;
         const destWithinBuffer = includeDestBuffer === false || (distance(destPoint, rideDestPoint) <= destBufferDistance);
-        return originWithinBuffer && destWithinBuffer;// && isWithinDateAndTime;
+        console.log(rideDateAndTime, currentRideTime, timeBuffer, isWithinDateAndTime, originWithinBuffer, destWithinBuffer);
+        return originWithinBuffer && destWithinBuffer && isWithinDateAndTime;
       });
 
       setDrawRides(filteredRides);
     }
-  });
+  }, [origin, destination, originBuffer, destinationBuffer, includeDestBuffer, rideDate, rideTime, rideTimeBuffer, storedRides]);
 
   return (
     <div className="grid grid-cols-2 grid-rows-1 items-center justify-start z-0 h-screen min-h-screen w-screen">
@@ -180,7 +184,12 @@ const Map: React.FC = () => {
               <>
                 <Polyline key={index} positions={[ride.origin, ride.destination]} />
                 <CircleMarker center={ride.origin} pathOptions={{ color: "red" }} radius={5}>
-                  <Tooltip>Origin</Tooltip>
+                  <Tooltip> Origin
+                    <p> Origin: {ride.origin?.lat}, {ride.origin?.lng} </p>
+                    <p> Destination: {ride.destination?.lat}, {ride.destination?.lng} </p>
+                    <p> Date: {ride.date} </p>
+                    <p> Time: {ride.time} </p>
+                  </Tooltip>
                 </CircleMarker>
                 <CircleMarker center={ride.destination} pathOptions={{ color: "green" }} radius={5}>
                   <Tooltip>Destination</Tooltip>
