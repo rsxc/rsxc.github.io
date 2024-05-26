@@ -98,26 +98,32 @@ const Map: React.FC = () => {
   const [destination, setDestination] = useState(null);
   const [destinationBuffer, setDestinationBuffer] = useState(999);
   const [drawRides, setDrawRides] = useState(null);
-  const [includeDestBuffer, setIncludeDestBuffer] = useState(0);
+  const [includeDestBuffer, setIncludeDestBuffer] = useState(false);
   const [rideDate, setRideDate] = useState(null);
   const [rideTime, setRideTime] = useState(null);
   const [rideTimeBuffer, setRideTimeBuffer] = useState(0);
 
   const getUserLocation = async () => {
     try {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const { latitude, longitude } = position.coords;
-            setPosition({ lat: latitude, lng: longitude });
-          },
-          (error) => {
-            console.error(error);
-            console.log("Error getting user's position");
-          }
-        );
+      const storedPosition = JSON.parse(localStorage.getItem('userPosition'));
+      if (storedPosition) {
+        setPosition(storedPosition);
       } else {
-        console.log("Geolocation is not supported by this browser");
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const { latitude, longitude } = position.coords;
+              setPosition({ lat: latitude, lng: longitude });
+              localStorage.setItem('userPosition', JSON.stringify({ lat: latitude, lng: longitude }));
+            },
+            (error) => {
+              console.error(error);
+              console.log("Error getting user's position");
+            }
+          );
+        } else {
+          console.log("Geolocation is not supported by this browser");
+        }
       }
     } catch (error) {
       console.error(error);
@@ -127,15 +133,16 @@ const Map: React.FC = () => {
 
   useEffect(() => {
     getUserLocation();
-  }, []);
+  }, [position]);
 
   useEffect(() => {
     initializeLocalStorage();
     const storedRides = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    
     if (origin?.lat && origin?.lng && destination?.lat && destination?.lng && rideDate && rideTime) {
       const filteredRides = storedRides?.filter((ride) => {
-        const bufferDistance = originBuffer / 1000;
-        const destBufferDistance = includeDestBuffer / 1000;
+        const bufferDistance = originBuffer / 1000; // meter to km
+        const destBufferDistance = destinationBuffer / 1000; // meter to km
         const timeBuffer = rideTimeBuffer * 60 * 1000; // convert to milliseconds
         const rideDateAndTime = new Date(`${rideDate}T${rideTime}:00`).getTime();
         const currentRideTime = new Date(`${ride.date}T${ride.time}:00`).getTime();
@@ -145,8 +152,8 @@ const Map: React.FC = () => {
         const destPoint = point([destination?.lng, destination?.lat]);
         const rideDestPoint = point([ride.destination?.lng, ride.destination?.lat]);
         const originWithinBuffer = distance(originPoint, rideOriginPoint) <= bufferDistance;
-        const destWithinBuffer = includeDestBuffer === 0 || (distance(destPoint, rideDestPoint) <= destBufferDistance && isWithinDateAndTime);
-        return originWithinBuffer && destWithinBuffer && isWithinDateAndTime;
+        const destWithinBuffer = includeDestBuffer === false || (distance(destPoint, rideDestPoint) <= destBufferDistance);
+        return originWithinBuffer && destWithinBuffer;// && isWithinDateAndTime;
       });
 
       setDrawRides(filteredRides);
@@ -206,11 +213,11 @@ const Map: React.FC = () => {
             name="destinationBuffer"
             min="999"
             max="9999"
-            className="appearance-none bg-red-500"
+            className="appearance-none bg-green-500"
             onChange={(e) => setDestinationBuffer(parseInt(e.target.value))}
           />
           <label> Destination Buffer </label>
-          <input type="checkbox" onChange={(e) => setIncludeDestBuffer(parseInt(e.target.value))} />
+          <input type="checkbox" onChange={(e) => setIncludeDestBuffer(e.target.checked)} />
           <label> include </label>
         </div>
         <div>
