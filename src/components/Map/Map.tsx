@@ -6,6 +6,7 @@ import { Polyline } from "react-leaflet";
 import { CircleMarker, Tooltip, Circle } from "react-leaflet";
 import initializeLocalStorage from "./LocalStorageRides";
 import { point, distance } from "@turf/turf";
+import { LatLng } from "leaflet";
 
 const LOCAL_STORAGE_KEY = "rides";
 
@@ -16,8 +17,6 @@ function LocationMarker({
   setDestination,
   originBuffer,
   destinationBuffer,
-  setOriginBuffer,
-  setDestinationBuffer,
 }) {
   useMapEvents({
     click(e: any) {
@@ -93,15 +92,15 @@ function LocationMarker({
 
 const Map: React.FC = () => {
   const [position, setPosition] = useState(null);
-  const [origin, setOrigin] = useState(null);
-  const [originBuffer, setOriginBuffer] = useState(999);
-  const [destination, setDestination] = useState(null);
-  const [destinationBuffer, setDestinationBuffer] = useState(999);
+  const [origin, setOrigin] = useState({lat : 43.50472757115076, lng : -80.51605224609376});
+  const [originBuffer, setOriginBuffer] = useState(9999);
+  const [destination, setDestination] = useState({lat : 43.5783630569388, lng : -79.61242675781251});
+  const [destinationBuffer, setDestinationBuffer] = useState(9999);
   const [drawRides, setDrawRides] = useState(null);
-  const [includeDestBuffer, setIncludeDestBuffer] = useState(false);
-  const [rideDate, setRideDate] = useState(null);
-  const [rideTime, setRideTime] = useState(null);
-  const [rideTimeBuffer, setRideTimeBuffer] = useState(0);
+  const [includeDestBuffer, setIncludeDestBuffer] = useState(true);
+  const [rideDate, setRideDate] = useState("2024-03-03");
+  const [rideTime, setRideTime] = useState("10:00");
+  const [rideTimeBuffer, setRideTimeBuffer] = useState(1);
   const [storedRides, setStoredRides] = useState([]);
 
   const getUserLocation = async () => {
@@ -156,7 +155,7 @@ const Map: React.FC = () => {
         const rideDestPoint = point([ride.destination?.lng, ride.destination?.lat]);
         const originWithinBuffer = distance(originPoint, rideOriginPoint) <= bufferDistance;
         const destWithinBuffer = includeDestBuffer === false || (distance(destPoint, rideDestPoint) <= destBufferDistance);
-        console.log(rideDateAndTime, currentRideTime, timeBuffer, isWithinDateAndTime, originWithinBuffer, destWithinBuffer);
+        console.log(origin, destination, originBuffer, destinationBuffer, rideDate, rideTime);
         return originWithinBuffer && destWithinBuffer && isWithinDateAndTime;
       });
 
@@ -168,7 +167,7 @@ const Map: React.FC = () => {
     <div className="grid grid-cols-2 grid-rows-1 items-center justify-start z-0 h-screen min-h-screen w-screen">
       <div className="grid-column-1 border-2 border-white mx-10">
         {position ? (
-          <MapContainer center={position} zoom={13} style={{ height: "80vh", margin: "10px" }}>
+          <MapContainer center={position} zoom={9} style={{ height: "80vh", margin: "10px" }}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             <LocationMarker
               origin={origin}
@@ -176,9 +175,7 @@ const Map: React.FC = () => {
               setOrigin={setOrigin}
               setDestination={setDestination}
               originBuffer={originBuffer}
-              setOriginBuffer={setOriginBuffer}
               destinationBuffer={destinationBuffer}
-              setDestinationBuffer={setDestinationBuffer}
             />
             {drawRides?.map((ride, index) => (
               <>
@@ -210,6 +207,7 @@ const Map: React.FC = () => {
             name="originBuffer"
             min="999"
             max="9999"
+            defaultValue={originBuffer}
             className="appearance-none bg-red-500"
             onChange={(e) => setOriginBuffer(parseInt(e.target.value))}
           />
@@ -222,11 +220,12 @@ const Map: React.FC = () => {
             name="destinationBuffer"
             min="999"
             max="9999"
+            defaultValue={destinationBuffer}
             className="appearance-none bg-green-500"
             onChange={(e) => setDestinationBuffer(parseInt(e.target.value))}
           />
           <label> Destination Buffer </label>
-          <input type="checkbox" onChange={(e) => setIncludeDestBuffer(e.target.checked)} />
+          <input type="checkbox" defaultChecked={includeDestBuffer} onChange={(e) => setIncludeDestBuffer(e.target.checked)} />
           <label> include </label>
         </div>
         <div>
@@ -237,6 +236,7 @@ const Map: React.FC = () => {
             type="date"
             id="date"
             name="date"
+            defaultValue={rideDate}
             className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={(e) => setRideDate(e.target.value)}
           />
@@ -249,6 +249,7 @@ const Map: React.FC = () => {
             type="time"
             id="time"
             name="time"
+            defaultValue={rideTime}
             className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={(e) => setRideTime(e.target.value)}
           />
@@ -261,6 +262,7 @@ const Map: React.FC = () => {
             id="timeLengthHours"
             name="timeLengthHours"
             className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            defaultValue={rideTimeBuffer}
             onChange={(e) => setRideTimeBuffer(parseInt(e.target.value))}
           />
           <label htmlFor="timeLengthHours" className="text-lg font-bold p-2">
