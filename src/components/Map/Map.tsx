@@ -6,7 +6,6 @@ import { Polyline } from "react-leaflet";
 import { CircleMarker, Tooltip, Circle } from "react-leaflet";
 import initializeLocalStorage from "./LocalStorageRides";
 import { point, distance } from "@turf/turf";
-import { LatLng } from "leaflet";
 
 const LOCAL_STORAGE_KEY = "rides";
 
