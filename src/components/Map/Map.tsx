@@ -10,14 +10,7 @@ import { LatLng } from "leaflet";
 
 const LOCAL_STORAGE_KEY = "rides";
 
-function LocationMarker({
-  origin,
-  destination,
-  setOrigin,
-  setDestination,
-  originBuffer,
-  destinationBuffer,
-}) {
+function LocationMarker({ origin, destination, setOrigin, setDestination, originBuffer, destinationBuffer }) {
   useMapEvents({
     click(e: any) {
       if (!origin) {
@@ -92,9 +85,9 @@ function LocationMarker({
 
 const Map: React.FC = () => {
   const [position, setPosition] = useState(null);
-  const [origin, setOrigin] = useState({lat : 43.50472757115076, lng : -80.51605224609376});
+  const [origin, setOrigin] = useState({ lat: 43.50472757115076, lng: -80.51605224609376 });
   const [originBuffer, setOriginBuffer] = useState(9999);
-  const [destination, setDestination] = useState({lat : 43.5783630569388, lng : -79.61242675781251});
+  const [destination, setDestination] = useState({ lat: 43.5783630569388, lng: -79.61242675781251 });
   const [destinationBuffer, setDestinationBuffer] = useState(9999);
   const [drawRides, setDrawRides] = useState(null);
   const [includeDestBuffer, setIncludeDestBuffer] = useState(true);
@@ -105,7 +98,7 @@ const Map: React.FC = () => {
 
   const getUserLocation = async () => {
     try {
-      const storedPosition = JSON.parse(localStorage.getItem('userPosition'));
+      const storedPosition = JSON.parse(localStorage.getItem("userPosition"));
       if (storedPosition) {
         setPosition(storedPosition);
       } else {
@@ -114,7 +107,7 @@ const Map: React.FC = () => {
             (position) => {
               const { latitude, longitude } = position.coords;
               setPosition({ lat: latitude, lng: longitude });
-              localStorage.setItem('userPosition', JSON.stringify({ lat: latitude, lng: longitude }));
+              localStorage.setItem("userPosition", JSON.stringify({ lat: latitude, lng: longitude }));
             },
             (error) => {
               console.error(error);
@@ -139,8 +132,8 @@ const Map: React.FC = () => {
     initializeLocalStorage();
     setStoredRides(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)));
   }, []);
-    
-    useEffect(() => {
+
+  useEffect(() => {
     if (origin?.lat && origin?.lng && destination?.lat && destination?.lng && rideDate && rideTime) {
       const filteredRides = storedRides?.filter((ride) => {
         const bufferDistance = originBuffer / 1000; // meter to km
@@ -154,14 +147,25 @@ const Map: React.FC = () => {
         const destPoint = point([destination?.lng, destination?.lat]);
         const rideDestPoint = point([ride.destination?.lng, ride.destination?.lat]);
         const originWithinBuffer = distance(originPoint, rideOriginPoint) <= bufferDistance;
-        const destWithinBuffer = includeDestBuffer === false || (distance(destPoint, rideDestPoint) <= destBufferDistance);
+        const destWithinBuffer =
+          includeDestBuffer === false || distance(destPoint, rideDestPoint) <= destBufferDistance;
         console.log(origin, destination, originBuffer, destinationBuffer, rideDate, rideTime);
         return originWithinBuffer && destWithinBuffer && isWithinDateAndTime;
       });
 
       setDrawRides(filteredRides);
     }
-  }, [origin, destination, originBuffer, destinationBuffer, includeDestBuffer, rideDate, rideTime, rideTimeBuffer, storedRides]);
+  }, [
+    origin,
+    destination,
+    originBuffer,
+    destinationBuffer,
+    includeDestBuffer,
+    rideDate,
+    rideTime,
+    rideTimeBuffer,
+    storedRides,
+  ]);
 
   return (
     <div className="grid grid-cols-2 grid-rows-1 items-center justify-start z-0 h-screen min-h-screen w-screen">
@@ -181,9 +185,17 @@ const Map: React.FC = () => {
               <>
                 <Polyline key={index} positions={[ride.origin, ride.destination]} />
                 <CircleMarker center={ride.origin} pathOptions={{ color: "red" }} radius={5}>
-                  <Tooltip> Origin
-                    <p> Origin: {ride.origin?.lat}, {ride.origin?.lng} </p>
-                    <p> Destination: {ride.destination?.lat}, {ride.destination?.lng} </p>
+                  <Tooltip>
+                    {" "}
+                    Origin
+                    <p>
+                      {" "}
+                      Origin: {ride.origin?.lat}, {ride.origin?.lng}{" "}
+                    </p>
+                    <p>
+                      {" "}
+                      Destination: {ride.destination?.lat}, {ride.destination?.lng}{" "}
+                    </p>
                     <p> Date: {ride.date} </p>
                     <p> Time: {ride.time} </p>
                   </Tooltip>
@@ -194,7 +206,9 @@ const Map: React.FC = () => {
               </>
             ))}
           </MapContainer>
-        ) : <>Loading map location. Please wait...</>}
+        ) : (
+          <>Loading map location. Please wait...</>
+        )}
       </div>
 
       <div className="grid-column-2 flex flex-col items-start">
@@ -225,7 +239,11 @@ const Map: React.FC = () => {
             onChange={(e) => setDestinationBuffer(parseInt(e.target.value))}
           />
           <label> Destination Buffer </label>
-          <input type="checkbox" defaultChecked={includeDestBuffer} onChange={(e) => setIncludeDestBuffer(e.target.checked)} />
+          <input
+            type="checkbox"
+            defaultChecked={includeDestBuffer}
+            onChange={(e) => setIncludeDestBuffer(e.target.checked)}
+          />
           <label> include </label>
         </div>
         <div>
