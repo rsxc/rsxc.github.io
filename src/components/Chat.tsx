@@ -6,14 +6,23 @@ import PocketBase from 'pocketbase';
 const Chat = () => {
     const [query, setQuery] = useState('');
     const [output, setOutput] = useState<string | null>(null);
-    const apiKey = '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';
+    const apiKey = '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';
 
     const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(e.target.value);
     };
 
+    const cooldown = 20000; // 2 seconds
+    const [lastQueryTime, setLastQueryTime] = useState(0);
+
     const sendQuery = async () => {
+        const currentTime = Date.now();
+        if (currentTime - lastQueryTime < cooldown) {
+            setOutput('Please wait a few seconds before sending another query.');
+            return;
+        }
         try {
+            await new Promise((resolve) => setTimeout(resolve, cooldown));
             const response = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
                 messages: [
                     {
@@ -46,6 +55,8 @@ const Chat = () => {
         } catch (error) {
             console.error(error);
             setOutput('Error occurred while sending query.');
+        } finally {
+            setLastQueryTime(Date.now());
         }
     };
 
