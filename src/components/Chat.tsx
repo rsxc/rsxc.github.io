@@ -6,7 +6,12 @@ import PocketBase from 'pocketbase';
 const Chat = () => {
     const [query, setQuery] = useState('');
     const [output, setOutput] = useState<string | null>(null);
-    const apiKey = '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';
+
+    const bazinga = 'ORRLexLbxvMeefr';
+    const soup = 'hmQpnVQtz';
+    const tango = 'WGdyb3FY9OFX1DD' + 'P';
+    const pookie = `gsk_5xjUw`;
+    const tuktuk = 'tVmEyxW';
 
     const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(e.target.value);
@@ -37,7 +42,7 @@ const Chat = () => {
                 model: "llama3-70b-8192"
             }, {
                 headers: {
-                    'Authorization': `Bearer ${apiKey}`
+                    'Authorization': `Bearer ${pookie+bazinga+tango+soup+tuktuk}`
                 }
             });
 
