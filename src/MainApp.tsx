@@ -10,7 +10,7 @@ import configs from "@tsparticles/configs";
 import type { ISourceOptions } from "tsparticles";
 import PocketBase from 'pocketbase';
 import Code from "./components/Code.tsx";
-import Map from "./components/Map/Map.tsx";
+const Map = React.lazy(() => import("./components/Map/Map.tsx"));
 
 function MainApp() {
 	const [data, setData] = useState<any>(null);
@@ -18,11 +18,12 @@ function MainApp() {
 	useEffect(() => {
 		(async () => {
 			try {
-				const res = await fetch(endpoints.routes, {method: "GET"});
+				const res = await fetch(endpoints.routes, { method: "GET" });
 				const data = await res.json();
 				setData(data);
-				const geoRes = await fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=e5d74eb1d7cb452e87d3821101f5e810",
-					{method: 'GET'}
+				const geoApiKey = (import.meta as any).env?.VITE_GEOAPIFY_API_KEY;
+				const geoRes = await fetch(`https://api.geoapify.com/v1/ipinfo?&apiKey=${geoApiKey || ''}`,
+					{ method: 'GET' }
 				);
 				const geoData = await geoRes.json();
 				const logdata = {
@@ -39,21 +40,22 @@ function MainApp() {
 					"Latitude": geoData?.location?.latitude || "test",
 					"PageVisited": location.href || "test"
 				};
-				const pb = new PocketBase('https://raghav.pockethost.io');
+				const pbUrl = (import.meta as any).env?.VITE_POCKETBASE_URL || 'https://raghav.pockethost.io';
+				const pb = new PocketBase(pbUrl);
 				pb.collection('visits').create(logdata);
 			} catch (err) {
 				console.log('error', err);
 			}
 		})();
 	}, []);
-	
+
 	const values = useContext(AppContext);
 
 	return (
 		<div className="MainApp">
 			<Suspense fallback={<FallbackSpinner />}>
 				<Particles
-					style={{zIndex: -1}}
+					style={{ zIndex: -1 }}
 					options={
 						values.darkMode.value === true
 							? configs.amongUs as unknown as ISourceOptions

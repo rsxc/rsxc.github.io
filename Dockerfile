@@ -20,6 +20,7 @@ FROM nginx:stable-alpine
 
 # Copy the build output to replace the default nginx contents.
 COPY --from=base /app/build /usr/share/nginx/html
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Expose port 80 to the outside
 EXPOSE 80

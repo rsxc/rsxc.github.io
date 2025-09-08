@@ -3,17 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App.tsx';
 import reportWebVitals from './reportWebVitals.ts';
+import { registerSW } from 'virtual:pwa-register';
 
 ReactDOM.createRoot(
   document.getElementById("root"),
 )
-.render(
-  <React.Fragment>
-    <App />
-  </React.Fragment>,
-);
+  .render(
+    <React.Fragment>
+      <App />
+    </React.Fragment>,
+  );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals(console.log);
+
+// Register PWA Service Worker
+registerSW({ immediate: true });
