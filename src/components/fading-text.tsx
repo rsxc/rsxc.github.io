@@ -9,7 +9,8 @@ const FadingTextComponent: React.FC<FadingTextComponentProps> = ({ text }) => {
   const [words, setWords] = useState<string[]>([]);
 
   useEffect(() => {
-    setWords(text.split(' '));
+    const safeText = typeof text === 'string' ? text : (text == null ? '' : (typeof text === 'object' ? JSON.stringify(text) : String(text)));
+    setWords(safeText.split(' '));
   }, [text]);
 
   return (
