@@ -10,6 +10,7 @@ import AppContext from './AppContext.ts';
 import MainApp from './MainApp.tsx';
 import GlobalStyles from './theme/GlobalStyles.ts';
 import { lightTheme, darkTheme } from './theme/themes.ts';
+import { FeatureFlagsProvider } from './components/FeatureFlagsProvider.tsx';
 
 
 function App() {
@@ -25,12 +26,14 @@ function App() {
 
   return (
     <AppContext.Provider value={{ darkMode }}>
-      <ThemeProvider theme={darkMode.value ? darkTheme : lightTheme}>
-        <GlobalStyles />
-        <div className="App">
-          <RouterProvider router={router} />
-        </div>
-      </ThemeProvider>
+      <FeatureFlagsProvider>
+        <ThemeProvider theme={darkMode.value ? darkTheme : lightTheme}>
+          <GlobalStyles />
+          <div className="App">
+            <RouterProvider router={router} />
+          </div>
+        </ThemeProvider>
+      </FeatureFlagsProvider>
     </AppContext.Provider>
   );
 }

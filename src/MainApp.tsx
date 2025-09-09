@@ -10,6 +10,7 @@ import configs from "@tsparticles/configs";
 import type { ISourceOptions } from "tsparticles";
 import PocketBase from 'pocketbase';
 import Code from "./components/Code.tsx";
+import { useFeatureFlag } from "./components/FeatureFlagsProvider.tsx";
 const Map = React.lazy(() => import("./components/Map/Map.tsx"));
 
 function MainApp() {
@@ -50,6 +51,7 @@ function MainApp() {
 	}, []);
 
 	const values = useContext(AppContext);
+	const showMap = useFeatureFlag('map');
 
 	return (
 		<div className="MainApp">
@@ -81,7 +83,7 @@ function MainApp() {
 							);
 						})}
 						<Route path="/code" element={<Code />} />
-						<Route path="/map" element={<Map />} />
+						{showMap && <Route path="/map" element={<Map />} />}
 					</Routes>
 				</Suspense>
 			</main>

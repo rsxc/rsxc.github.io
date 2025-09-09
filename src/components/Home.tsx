@@ -5,6 +5,7 @@ import endpoints from '../constants/endpoints.ts';
 import Social from './Social.tsx';
 import FallbackSpinner from './FallbackSpinner.tsx';
 import Chat from './Chat.tsx';
+import { useFeatureFlag } from './FeatureFlagsProvider.tsx';
 
 const styles = {
   nameStyle: {
@@ -24,6 +25,7 @@ const styles = {
 
 function Home() {
   const [data, setData] = useState<any>(null);
+  const showChat = useFeatureFlag('chat.puter');
 
   useEffect(() => {
     fetch(endpoints.home, {
@@ -49,7 +51,7 @@ function Home() {
           />
         </div>
         <Social />
-        <Chat />
+        {showChat && <Chat />}
       </div>
     </Fade>
   ) : <FallbackSpinner />;

@@ -1,0 +1,14 @@
+{
+    "flags": {
+        "chat.puter": {
+            "enabled": true
+        },
+        "map": {
+            "enabled": true
+        }
+    },
+    "overrides": {
+        "allow": {},
+        "deny": {}
+    }
+}
